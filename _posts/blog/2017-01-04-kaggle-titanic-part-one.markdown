@@ -76,7 +76,7 @@ ggplot(train, aes(x = SibSp, fill = factor(Survived))) +
   labs(x = 'Siblings')
 
 ```
-![Survived vs Perished]({{ site.url }}/assets/Died_Survived.png)
+![Survived vs Perished]({{ site.url }}/assets/Died_Survived.jpg)
 
 The graphs suggests that 549 people did not survive while 342 survived. This is approximately balanced and should not cause any major problems for prediction. Next we plot the number of males and females aboard while also looking at the proportions who survived. The plot tells us two things. First, there was approximately twice as many males on board than females and second,  that males were actually much more likely to not survive than females. Presumably this is due to women and children having precedence for boarding life boats.
 
@@ -269,7 +269,7 @@ Next up, we are going to try and do something with the Fare variable. Assuming p
 Plotting Fare by Pclass reveals that indeed passengers in 1st class paid higher median fares. Likewise passengers in 3rd class paid much less and in fact were more likely to not survive. Since the 0 values seem to be evenly spread through the Pclasses I will just impute the median value. I do the same for the one NA value as well.
 
 
-```R
+```python
 boxplot(train_new$Fare ~ train_new$Pclass, col = 'blue')
 
 train_new[which(train_new$Fare == 0), ]$Pclass
