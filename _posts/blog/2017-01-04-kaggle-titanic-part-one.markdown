@@ -80,24 +80,24 @@ ggplot(train, aes(x = SibSp, fill = factor(Survived))) +
 
 The graphs suggests that 549 people did not survive while 342 survived. This is approximately balanced and should not cause any major problems for prediction. Next we plot the number of males and females aboard while also looking at the proportions who survived. The plot tells us two things. First, there was approximately twice as many males on board than females and second,  that males were actually much more likely to not survive than females. Presumably this is due to women and children having precedence for boarding life boats.
 
-![Survived by Gender]({{ site.baseurl }}/assets/img/Sex_survive.png)
+![Survived by Gender](/assets/img/Sex_survive.png)
 
 Next up I try looking at Sex by age via a boxplot and see if anything interesting pops out. First of all,  It appears that the median age for men is higher than for women. It also looks like there were a number of older men on board in their 70's. We might get improved results by getting rid of these outliers. We will replace these by the median Age for males later.
 
-![Survived by Gender]({{ site.url }}/assets/Sex_Age.png)
+![Survived By Gender and Age](/assets/Sex_Age.png)
 
 The Embarked variable tells us where the passenger got on. After a quick look up on the Internet I found out that the three categories C,Q and S stand for Cherbourg,  Queenstown, Southamption respectively. From the graph, it looks like the majority of passengers got on at Southampton. We can see that for both S and Q the number of passengers who did not survive exceeds the number of passengers who did survive. This was not the case in C however,  where the proportion of people that survived was larger than the proportion who did not. Im not quite sure why this is the case.
 
-![Survived by Gender]({{ site.url }}/assets/Embarked.png)
+![Survived by Gender](/assets/Embarked.png)
 
 
-![Survived by Gender]({{ site.url }}/assets/Embarked_survived-1.png)
+![Survived by Gender](/assets/Embarked_survived-1.png)
 
 The last plot we will have a look at before we begin cleaning and organizing the data is that of passenger class. In the description of the data on Kaggle, this variable is listed as a proxy for social class with Pclass =  1 meaning upper class.  One would think that being in a higher class means you are more likely to survive as you might get priority in the lifeboats? Let's see if this is the case.
 
 From the graph, it appears that being in Pclass one makes you marginally more likely to survive than to not survive. Likewise, being in the lowest class (Pclass 3) made someone significantly more likely to perish. As well as being more likely to get priority on a lifeboat, this could have also been due to location on the ship since I believe that lower class passengers were given rooms further below deck which likely impacted their ability to escape in time.
 
-![Survived by Gender]({{ site.url }}/assets/Pclass_survive.png)
+![Survived by Gender](/assets/Pclass_survive.png)
 
 Ok, I think that's enough for our EDA. We can now start messing around with the data a little bit and do some feature engineering.  Before, we get into that however, I am going to join the training and test set together so that any changes we make in terms of features or filling in missing values will be made to both.  We can split them up again before training our model on them.  We must create a Survived column in the test set to make the dataframes the same size before we append the rows of both datasets. This is simple enough to do in R.
 
@@ -125,7 +125,7 @@ missmap(train, main="Titanic Training Data - Missings Map", col=c("yellow", "dar
 summary(train$Age) 
 ```
 
-![Survived by Gender]({{ site.url }}/assets/missmap.png)
+![Survived by Gender](/assets/missmap.png)
 
 We are missing a number of observations for Age and especially cabin. As I mentioned before there are a number of ways to deal with missing data. The Age variable could perhaps be imputed using some of the other variables. For example, we could use a persons title in their name to infer their age or least to infer the likely range of their age. Perhaps the best way to proceed though, is to use a machine learning algorithm to predict the values. The MICE package in R implements this quite easily using a random forest to predict a persons age using the other available information. We will use this to predict the empty values in Age and Embarked. After reading through the Kaggle forums, I found a very interesting approach of how to fill in the missing values of Cabin which I will probably try at a later date.
 
@@ -193,7 +193,7 @@ We can load a library called Hmisc and use the bystats function to give us a nic
 
 It looks like we are missing a lot of values from Mr and Mrs and Miss. We are also missing values from Master.  After a quick look on Wikipedia  we see that the definition of Master  is a male under the age of 12. This is going to be helpful for filling in our missing age for Master. I perform a boxplot to give me an idea of the distribution of ages for all Titles. It looks like there are a few passengers with the title Master over 12. Let's look at the max value for Master.
 
-![Survived by Gender]({{ site.url }}/assets/Age_boxplot.png)
+![Survived by Gender](/assets/Age_boxplot.png)
 
 
 ```R
@@ -249,9 +249,9 @@ ggplot(train, aes(x = SibSp, fill = factor(Survived))) +
 ggplot(train, aes(x = as.factor(Parch), fill = factor(Survived))) + geom_bar()
 ```
 
-![Survived by Gender]({{ site.url }}/assets/SibSP.png)
+![Survived by Gender](/assets/SibSP.png)
 
-![Survived by Gender]({{ site.url }}/assets/Parch.png)
+![Survived by Gender](/assets/Parch.png)
 
 
 We can see from the Siblings graph, passengers with more siblings such as 5-8 had a 100 per cent non-survival rate. This might be useful, especially if we categories into big and small families. Ok this will be slightly arbitrary but I am going to define a family as small if it has 3 or less people.
@@ -277,7 +277,7 @@ train_new$Fare[which(train_new$Fare == 0)] = median(train_new$Fare, na.rm = TRUE
 train_new$Fare[which(is.na(train_new$Fare))] = median(train_new$Fare, na.rm = TRUE)
 ```
 
-![Survived by Gender]({{ site.url }}/assets/Fare_Plcass.png)
+![Survived by Gender](/assets/Fare_Plcass.png)
 
 
 I am going to do is split the Age variable into smaller categories instead of having it as a continuous variable. This may help prediction later on. Before I do that, however, I will perform a random forest to impute the missing values of Age.
@@ -298,7 +298,7 @@ train_new_imp <- data.frame(train_new$PassengerId, complete(age.df,6))
 train_new$Age = train_new_imp$Age
 ```
 
-![Survived by Gender]({{ site.url }}/assets/Age_Dist.png)
+![Survived by Gender](/assets/Age_Dist.png)
 
 Plotting the Age distribution reveals that our imputations keeps approximately the same distribution which is good. Finally, I split ages up into 4 categories which will hopefully cause our model to perform better.
 
