@@ -6,7 +6,7 @@ categories: blog
 ---
 
 This will be my attempt of trying to predict whether passengers on the titanic survived or died aboard the titanic. I will be using the famous titanic dataset available from 
-[Kaggle](https://www.kaggle.com/titanic)
+[Kaggle](https://www.kaggle.com/c/titanic)
 This analysis will be done in R.
 
 To start off I will load the datasets in and have a look at the variables and try to make sense of them.
@@ -76,7 +76,7 @@ ggplot(train, aes(x = SibSp, fill = factor(Survived))) +
   labs(x = 'Siblings')
 
 ```
-![Survived vs Perished]({{ site.url }}/assets/Died_Survived.jpg)
+![Survived vs Perished](/assets/Died_Survived.jpg)
 
 The graphs suggests that 549 people did not survive while 342 survived. This is approximately balanced and should not cause any major problems for prediction. Next we plot the number of males and females aboard while also looking at the proportions who survived. The plot tells us two things. First, there was approximately twice as many males on board than females and second,  that males were actually much more likely to not survive than females. Presumably this is due to women and children having precedence for boarding life boats.
 
