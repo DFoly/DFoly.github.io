@@ -80,7 +80,7 @@ ggplot(train, aes(x = SibSp, fill = factor(Survived))) +
 
 The graphs suggests that 549 people did not survive while 342 survived. This is approximately balanced and should not cause any major problems for prediction. Next we plot the number of males and females aboard while also looking at the proportions who survived. The plot tells us two things. First, there was approximately twice as many males on board than females and second,  that males were actually much more likely to not survive than females. Presumably this is due to women and children having precedence for boarding life boats.
 
-![Survived by Gender]({{ site.url }}/assets/Sex_survive.png)
+![Survived by Gender]({{ site.url }}/assets/img/Sex_survive.png)
 
 Next up I try looking at Sex by age via a boxplot and see if anything interesting pops out. First of all,  It appears that the median age for men is higher than for women. It also looks like there were a number of older men on board in their 70's. We might get improved results by getting rid of these outliers. We will replace these by the median Age for males later.
 
