@@ -1,2 +1,3 @@
 # DFoly.github.io
-A portfolio of my programming and data science projects
+Personal Website featuring my interests, my professional experience and
+my blog.
