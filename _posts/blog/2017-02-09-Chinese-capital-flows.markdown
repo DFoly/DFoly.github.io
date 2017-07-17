@@ -32,7 +32,7 @@ Now we know that this phenomenon is occurring. The question is why is it  occurr
 
 Another possible explanation is that as average incomes in China have risen significantly in recent years, after having invested heavily in real estate, household's are now beginning to diversify their portfolios and reduce their exposure by buying into foreign assets which is contributing to significant outflows. [The Bank of International Settlements](http://www.bis.org/publ/qtrpdf/r_qt1603u.html) suggest that the outflows may be as a result of Chinese firms paying down their dollar debt which could have accelerated prompted by the strengthening of the US dollar on the back of Trump's economic policy announcements.
 
-## Risks to the Chinese Economy
+# Risks to the Chinese Economy
 
 More generally, there are a number of risks that threaten the future growth of the Chinese economy. I think it is worth talking about some of the challenges that China faces and will face in the future. The rate at which money is leaving the Chinese economy means that the level of investment is falling, contributing to the slowdown in GDP. This slowdown is part of the reason capital is leaving, creating a vicious cycle that could further threaten stability in the country.
 
@@ -46,7 +46,7 @@ In an effort to keep GDP growth at a target of around 6 per cent, the government
 
 The level of debt is not the only problem with the Chinese economy. There are other longer term demographic issues as well. The UN estimates that by 2050, a quarter of the Chinese population will be over the age of 65. which will have serious implications for the state in areas such as health and pensions. These problems are not unique to China and are in fact are serious problem facing many major economies including Europe and Japan which will have implications for potential growth.
 
-## What can China do?
+# What can China do?
 
 There are a few things the government can do, however, to attempt to ameliorate some of these issues and some of these have been attempted already. The government has recently tightened capital rules by increasing regulation on outbound investment from state controlled firms. Latest data suggest that this may be working with a significant fall off in RMB outflows recorded in December. Whether this will be enough to permanently stem the flow is uncertain and they may have to be tightened further to avoid another record fall of the RMB against the dollar in 2017. The PBOC will also have their work cut out for them to undertake the appropriate monetary policy that carefully manages the stability of the financial sector while supporting the wider macroeconomy.
 
