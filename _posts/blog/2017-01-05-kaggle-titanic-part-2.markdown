@@ -48,7 +48,7 @@ We could next try a logistic regression with an L2 penalty also known as a Ridge
 If overfitting is occurring then this will help to minimise it.
 
 
-$ l(w) = ln\prod_j P\\(y^j|x^j, w\\) -\lambda \lVert \mathbf{w} \rVert_2^2 $
+$ l(w) = ln\prod_j P(y^j|x^j, w) -\lambda \lVert \mathbf{w} \rVert_2^2 $
 
 
 I am going to digress a bit here to discuss overfitting which is a very common problem when training models and is a very important concept to understand and recognise. To see why this L2 penalty term works consider the following. Imagine we had a model that linearly separated our data. In other words it perfectly identified all positive outcomes (all survivors) correctly and all negative outcomes (all non survivors) correctly. Although ostensibly this looks like it is a very good model, in reality it probably isn't. The reason being is that our model has more than likely overfit the training data. This kind of overfitting in logistic regression tends to happen when we include higher order terms in our regression, Age squared or Age cubed for example. It causes our decision boundary to become more complicated. See for example the graphs below which I kindly borrowed from 
