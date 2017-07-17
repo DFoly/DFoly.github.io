@@ -47,7 +47,7 @@ print(paste('Accuracy',1-misClasificError))
 We could next try a logistic regression with an L2 penalty also known as a Ridge regression. Below is an equation implementing an L2 penalty term. It works be penalising the squared norm of the coefficients w.
 If overfitting is occurring then this will help to minimise it.
 
-$ l(w) = ln\prod P\(y^j|x^j, w\) - \lambda \lVert \mathbf{w} \rVert_2^2 $
+$ l(w) = ln\prod P\\(y^j|x^j, w\\) - \lambda \lVert \mathbf{w} \rVert_2^2 $
 
 
 $ r = h = \sqrt{\frac {1} {2}} = \sqrt{\frac {N} {N+1}} \sqrt{\frac {N+1} {2N}} $
