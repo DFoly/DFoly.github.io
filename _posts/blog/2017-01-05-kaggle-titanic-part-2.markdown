@@ -64,7 +64,7 @@ So how can we identify overfitting?
 Having near perfect accuracy on our training set is a sure fire sign of overfitting. Another one of the tell tale signs of overfitting in logistic regression is large coefficients. Consider a 2 dimensional example where we have a linear decision boundary that perfectly separates the positive and negative examples. Our equation would be as follows:
 
 
-$$\hat{w}\_1 \#positive - \hat{w}\_2 \#negative = 0$$
+$\hat{w}_1 \#positive - \hat{w}_2 \#negative = 0$
 
 
 In this case the equation of our decision boundary line would equal 0 as above. Now imagine we multiple each side by some constant, say 10. Well our coefficients have gotten 10 times bigger but this decision boundary also separates the data perfectly since it is also equal to 0. This is true for any value of the coefficients. The reason the coefficients become large is a symptom of maximum likelihood.  To understand why, we need to recall that the goal of maximum likelihood  is to find the coefficients which maximise the probability of correctly identifying the target variable.
