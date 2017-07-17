@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Kaggle Titanic part 2"
+title:  "Kaggle Titanic part 2 Model Estimation"
 date:   2017-01-05 18:11:16
 categories: blog
 ---
@@ -12,9 +12,9 @@ This is the second part of the Titanic Kaggle Competition. In this part I will t
 train  = train_new[1:891,]
 test = train_new[892:1309,]
 
-train$gp &lt;- runif(dim(train)[1])
-testSet &lt;- subset(train, train$gp  &lt;= 0.1)
-trainingSet &lt;- subset(train, train$gp &gt; 0.1)
+train$gp <- runif(dim(train)[1])
+testSet <- subset(train, train$gp  <= 0.1)
+trainingSet <- subset(train, train$gp &gt; 0.1)
 ```
 
 
@@ -24,7 +24,7 @@ Sex, AgeClass, Pclass, FamilySize, Fare, Mother, Embarked and Title
 
 ```python
 
-reg1 &lt;- glm(Survived ~ Sex + AgeClass + Pclass +
+reg1 <- glm(Survived ~ Sex + AgeClass + Pclass +
 FamilySize + Title + Fare + Mother + Embarked, family = binomial(link = 'logit') ,
 data = trainingSet)
 summary(reg1)
@@ -36,10 +36,10 @@ We get an accuracy of 0.7692 on our test set. Not the most phenomenal score in t
 
 
 ```python
-fitted.results &lt;- predict(reg1, newdata = testSet, type = 'response')
-fitted.results &lt;- ifelse(fitted.results &gt; 0.5,1,0)
+fitted.results <- predict(reg1, newdata = testSet, type = 'response')
+fitted.results <- ifelse(fitted.results &gt; 0.5,1,0)
 
-misClasificError &lt;- mean(fitted.results != testSet$Survived)
+misClasificError <- mean(fitted.results != testSet$Survived)
 print(paste('Accuracy',1-misClasificError))
 ```
 
@@ -90,18 +90,18 @@ y.m = trainingSet$Survived
 
 grid=10^seq(10,-2,length=100)
 cvfit.m.ridge = cv.glmnet(x.m, y.m,
-family = &quot;binomial&quot;, 
+family ="binomial", 
 alpha = 0,lambda = grid,
-type.measure = &quot;class&quot;)
+type.measure ="class")
 
-coef(cvfit.m.ridge, s = &quot;lambda.min&quot;)
+coef(cvfit.m.ridge, s ="lambda.min")
 
 
 pred2 = predict(cvfit.m.ridge, 
 s = 'lambda.min', newx=                          data.matrix(testSet[,c(3,5,6,10,12,13,14,15,16)]), 
-type=&quot;class&quot;)
+type="class")
 
-misClasificError_ridge &lt;- mean(pred2 != testSet$Survived)
+misClasificError_ridge <- mean(pred2 != testSet$Survived)
 print(paste('Accuracy',1-misClasificError_ridge))
 ```
 
@@ -117,7 +117,7 @@ Here is the code:
 library(randomForest)
 set.seed(111)
 
-rf1 &lt;- randomForest(as.factor(Survived) ~ Pclass +
+rf1 <- randomForest(as.factor(Survived) ~ Pclass +
 Sex + Fare + Embarked +
 Title + FamilySize +
 Mother + AgeClass
@@ -125,11 +125,11 @@ Mother + AgeClass
 importance = TRUE,
 ntree = 2000)
 
-importance &lt;- importance(rf1)
-VarImportance &lt;- data.frame(Variables = row.names(importance),
+importance <- importance(rf1)
+VarImportance <- data.frame(Variables = row.names(importance),
 Importance = round(importance[, 'MeanDecreaseGini'],2))
 
-rankImportance &lt;- VarImportance %&gt;% 
+rankImportance <- VarImportance %&gt;% 
 mutate(Rank = paste0('#', dense_rank(desc(Importance))))
 
 ggplot(rankImportance, aes(x = reorder(Variables, Importance),
