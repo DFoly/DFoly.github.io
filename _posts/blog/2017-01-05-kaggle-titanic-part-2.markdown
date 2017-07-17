@@ -51,6 +51,8 @@ If overfitting is occurring then this will help to minimise it.
 $l(w) = ln\prod P(y^j|x^j, w) -\lambda \lVert \mathbf{w} \rVert_2^2$
 
 
+$$ r = h = \sqrt{\frac {1} {2}} = \sqrt{\frac {N} {N+1}} \sqrt{\frac {N+1} {2N}} $$
+
 I am going to digress a bit here to discuss overfitting which is a very common problem when training models and is a very important concept to understand and recognise. To see why this L2 penalty term works consider the following. Imagine we had a model that linearly separated our data. In other words it perfectly identified all positive outcomes (all survivors) correctly and all negative outcomes (all non survivors) correctly. Although ostensibly this looks like it is a very good model, in reality it probably isn't. The reason being is that our model has more than likely overfit the training data. This kind of overfitting in logistic regression tends to happen when we include higher order terms in our regression, Age squared or Age cubed for example. It causes our decision boundary to become more complicated. See for example the graphs below which I kindly borrowed from 
 [coursera](https://www.coursera.org/learn/machine-learning/home/welcome) Andrew Ng's Machine learning course on Coursera, a great course for anyone interested btw. The graphs show the decision boundary under different order polynomial terms.
 
