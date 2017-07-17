@@ -1,6 +1,4 @@
 name: Daniel Foley
-markdown: redcarpet
-redcarpet:
-    extensions: ["no_intra_emphasis"]
+markdown: kramdown
 exclude: ["node_modules", "gulpfile.js", "package.json"]
 baseurl: dfoly.github.io
