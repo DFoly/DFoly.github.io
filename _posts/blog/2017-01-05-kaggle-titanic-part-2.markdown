@@ -35,14 +35,13 @@ It seems like the most significant variables from this logistic regression are P
 
 We get an accuracy of 0.7692 on our test set. Not the most phenomenal score in the world but it's a start and it beats some of the benchmark scores on kaggle. This will be a useful benchmark to try and beat.
 
-
-```python
+~~~~~~~~
 fitted.results <- predict(reg1, newdata = testSet, type = 'response')
 fitted.results <- ifelse(fitted.results &gt; 0.5,1,0)
 
 misClasificError <- mean(fitted.results != testSet$Survived)
 print(paste('Accuracy',1-misClasificError))
-```
+~~~~~~~~
 
 We could next try a logistic regression with an L2 penalty also known as a Ridge regression. Below is an equation implementing an L2 penalty term. It works be penalising the squared norm of the coefficients w.
 If overfitting is occurring then this will help to minimise it.
