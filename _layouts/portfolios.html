@@ -10,7 +10,7 @@ layout: default
 <hr class="bar-blog"> </hr>
   {% for post in site.categories['portfolio'] %}
     <div class="portfolio-header">
-      <a href="{{portfolio.url}}"><h1 class="portfolio-title">{{ post.title }}</h1></a>
+      <a href="{{portfolios.url}}"><h1 class="portfolio-title">{{ post.title }}</h1></a>
     </div>
     <div class="portfolio-header">
       <p class="portfolio-meta">{{ post.date | date: "%B %-d, %Y — %H:%M" }}{% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</p>
