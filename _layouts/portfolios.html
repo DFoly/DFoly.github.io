@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+{% include header_small.html %}
+
+
+
+<h2 id="Portfolio">Portfolio of Projects</h2>
+<hr class="bar-blog"> </hr>
+  {% for portfolio in site.categories['portfolio'] %}
+    <div class="portfolio-header">
+      <a href="{{portfolio.url}}"><h1 class="portfolio-title">{{ portfolio.title }}</h1></a>
+    </div>
+    <div class="portfolio-header">
+      <p class="portfolio-meta">{{ portfolio.date | date: "%B %-d, %Y — %H:%M" }}{% if portfolio.author %} • {{ portfolio.author }}{% endif %}{% if portfolio.meta %} • {{ portfolio.meta }}{% endif %}</p>
+    </div>
+
+  {% endfor %}
+  <hr class="bar-blog"> </hr>
+<div class="temp-portolio">
+
+</div>
