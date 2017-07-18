@@ -28,20 +28,20 @@ layout: default
 <!-- Adding portfolio to homepage -->
 <h2 id="Portfolio"> Portfolio </h2>
 <hr class="bar-blog"> </hr>
-{% for portfolio in site.cateegories['portfolio'] limit:3%}
+{% for post in site.cateegories['portfolio'] limit:3%}
 
     <div class = "portfolio-header-title">
         <a href = "{{ portfolio.url }}"> <h1 class = "portfolio.title">{{ post.title }}
         </h1></a>
     </div>
     <div class="portfolio-header date">
-      <p class="portfolio-meta">{{ portfolio.date | date: "%B %-d, %Y — %H:%M" }}{% if portfolio.author %} • {{ portfolio.author }}{% endif %}{% if portfolio.meta %} • {{ portfolio.meta }}{% endif %}</p>
+      <p class="portfolio-meta">{{ post.date | date: "%B %-d, %Y — %H:%M" }}{% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</p>
     </div>
 {% endfor %}
 
 <hr class="bar-blog"> </hr>
 
-<h2 id="Portfolio"><a href="/portfolios"> More >> </a></h2>
+<h2 id="Blog"><a href="/portfolios"> More >> </a></h2>
 
 {% include contact.html %}
 

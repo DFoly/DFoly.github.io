@@ -8,12 +8,12 @@ layout: default
 
 <h2 id="Portfolio">Portfolio of Projects</h2>
 <hr class="bar-blog"> </hr>
-  {% for portfolio in site.categories['portfolio'] %}
+  {% for post in site.categories['portfolio'] %}
     <div class="portfolio-header">
-      <a href="{{portfolio.url}}"><h1 class="portfolio-title">{{ portfolio.title }}</h1></a>
+      <a href="{{portfolio.url}}"><h1 class="portfolio-title">{{ post.title }}</h1></a>
     </div>
     <div class="portfolio-header">
-      <p class="portfolio-meta">{{ portfolio.date | date: "%B %-d, %Y — %H:%M" }}{% if portfolio.author %} • {{ portfolio.author }}{% endif %}{% if portfolio.meta %} • {{ portfolio.meta }}{% endif %}</p>
+      <p class="portfolio-meta">{{ post.date | date: "%B %-d, %Y — %H:%M" }}{% if post.author %} • {{ post.author }}{% endif %}{% if post.meta %} • {{ post.meta }}{% endif %}</p>
     </div>
 
   {% endfor %}
