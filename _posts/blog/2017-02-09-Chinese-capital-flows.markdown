@@ -28,7 +28,10 @@ Figure 4
 Notes: Gross Fixed Capital Formation: Source: World Bank
 
 
+
 This large outflow of assets has led to dwindling supply of reserves of foreign assets as the PBOC try to stem the depreciation of the RMB. Figure 5 and 6 show exactly this.
+
+
 
 Figure 5
 ![Foreign Reserves](/assets/img/Foreign-Reserves.png)
@@ -45,6 +48,7 @@ Now we know that this phenomenon is occurring. The question is why is it  occurr
 
 Another possible explanation is that as average incomes in China have risen significantly in recent years, after having invested heavily in real estate, household's are now beginning to diversify their portfolios and reduce their exposure by buying into foreign assets which is contributing to significant outflows. [The Bank of International Settlements](http://www.bis.org/publ/qtrpdf/r_qt1603u.html) suggest that the outflows may be as a result of Chinese firms paying down their dollar debt which could have accelerated prompted by the strengthening of the US dollar on the back of Trump's economic policy announcements.
 
+
 ## Risks to the Chinese Economy
 
 More generally, there are a number of risks that threaten the future growth of the Chinese economy. I think it is worth talking about some of the challenges that China faces and will face in the future. The rate at which money is leaving the Chinese economy means that the level of investment is falling, contributing to the slowdown in GDP. This slowdown is part of the reason capital is leaving, creating a vicious cycle that could further threaten stability in the country.
@@ -55,9 +59,11 @@ Figure 7
 ![Credit to GDP](/assets/img/Credit-to-GDP.png)
 Source: BIS
 
+
 Figure 8
 ![Ireland Credit to GDP](/assets/img/Ire_credit.png)
 Source: BIS
+
 
 Figure 9
 ![Spain Credit to GDP](/assets/img/Spain-Credit.png)
