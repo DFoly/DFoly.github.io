@@ -1,5 +1,5 @@
 ---
 layout: page
-title: portfolios
-permalink: /portfolios/
+title: portfolio
+permalink: /portfolio/
 ---
