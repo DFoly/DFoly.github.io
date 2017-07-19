@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: portfolio
 title: about
 permalink: /portfolio/
 ---
