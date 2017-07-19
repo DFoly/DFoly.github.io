@@ -51,8 +51,6 @@ l(w) = ln \prod P(y^j | x^j,w) - \lambda \lVert \mathbf{w} \rVert_2^2
 $
 
 
-$ r = h = \sqrt{\frac {1} {2}} = \sqrt{\frac {N} {N+1}} \sqrt{\frac {N+1} {2N}} $
-
 I am going to digress a bit here to discuss overfitting which is a very common problem when training models and is a very important concept to understand and recognise. To see why this L2 penalty term works consider the following. Imagine we had a model that linearly separated our data. In other words it perfectly identified all positive outcomes (all survivors) correctly and all negative outcomes (all non survivors) correctly. Although ostensibly this looks like it is a very good model, in reality it probably isn't. The reason being is that our model has more than likely overfit the training data. This kind of overfitting in logistic regression tends to happen when we include higher order terms in our regression, Age squared or Age cubed for example. It causes our decision boundary to become more complicated. See for example the graphs below which I kindly borrowed from 
 [coursera](https://www.coursera.org/learn/machine-learning/home/welcome) Andrew Ng's Machine learning course on Coursera, a great course for anyone interested btw. The graphs show the decision boundary under different order polynomial terms.
 
@@ -103,7 +101,8 @@ coef(cvfit.m.ridge, s ="lambda.min")
 
 
 pred2 = predict(cvfit.m.ridge, 
-s = 'lambda.min', newx=                          data.matrix(testSet[,c(3,5,6,10,12,13,14,15,16)]), 
+s = 'lambda.min', 
+newx=data.matrix(testSet[,c(3,5,6,10,12,13,14,15,16)]), 
 type="class")
 
 misClasificError_ridge <- mean(pred2 != testSet$Survived)
@@ -134,7 +133,7 @@ importance <- importance(rf1)
 VarImportance <- data.frame(Variables = row.names(importance),
 Importance = round(importance[, 'MeanDecreaseGini'],2))
 
-rankImportance <- VarImportance %&gt;% 
+rankImportance <- VarImportance %>% 
 mutate(Rank = paste0('#', dense_rank(desc(Importance))))
 
 ggplot(rankImportance, aes(x = reorder(Variables, Importance),
