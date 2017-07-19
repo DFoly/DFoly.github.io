@@ -41,7 +41,9 @@ $\sigma^2 = \dfrac{\epsilon' \epsilon}{T}$
 where T is the number of rows in our dataset. The main difference between the classical Frequentist approach and the Bayesian approach is that the parameters of the model are solely based on the information contained in the data whereas the Bayesian approach allows us to incorporate other information through the use of a prior. We are able to incorporate this prior belief by using Bayes law. The posterior distribution of our parameters (what we want to find) can be expressed in the following way.
 
 
-$H(B,\sigma^2 | Y_t) \propto F(Y_t | B, \sigma^2) \times P(B,\sigma^2)$
+$
+H(B,\sigma^2 Y_t) \propto F(Y_t B, \sigma^2) \times P(B,\sigma^2)
+$
 
 
 This equation states that the posterior distribution of our parameters conditional on our data is proportional to our likelihood function (which is normal btw) multiplied by the prior distribution of our coefficients. There is usually a term $F(Y)$ in the denominator on the right hand side but since this is only a constant and doesn't depend on our parameters we can omit it for the moment.
