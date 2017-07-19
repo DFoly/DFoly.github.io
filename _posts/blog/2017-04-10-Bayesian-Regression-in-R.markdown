@@ -19,7 +19,9 @@ $\epsilon_t \sim N(0,\sigma^2)$
 They would start by collecting the appropriate data on each variable and form the likelihood function below. They would then try to find the
 $ B $ and $ \sigma^2 $ that maximises this function.
 
-$F(Y_t|B,\sigma^2) = (2\pi \sigma^2)^{-T/2} \exp(- \frac{(Y_t-B X_t)^T (Y_t-B X_t)}{2 \sigma^2})$
+$ 
+F Y_t B,\sigma^2 = (2\pi \sigma^2)^{-T/2} \exp(- \frac{(Y_t-B X_t)^T (Y_t-B X_t)}{2 \sigma^2})
+$
 
 
 In this case the optimal coefficients can be found by taking the derivative of the log of this function and finding the values of $\hat{B}$ where the derivative equals zero. If we actually did the math, we would find the solution to be the OLS estimates below.
@@ -46,7 +48,20 @@ This equation states that the posterior distribution of our parameters condition
 
 In order to calculate the posterior distribution, one needs to isolate the part of this posterior distribution related to each coefficient. This involves calculating marginal distributions, which for many models in practice is extremely difficult to calculate analytically. This is where a numerical method known as Gibbs sampling comes in handy. The Gibbs sampler let's us use draws from the conditional distribution to approximate the joint marginal  distribution. Here is a quick overview of how it works:
 
-Imagine we have a joint distribution of N variables: $f(x_1, x_2, \dots , x_N)$ and we want to find the marginal distribution of each variable. If the form of these variables are unknown, however, it may be very difficult to calculate the necessary integrations analytically. In cases such as these, we take the following steps to implement the Gibbs algorithm. First, we need to initialise starting values for our variables, $x_1^0 \dots x_N^0$. Next we sample our first variable conditional on the current values of the other N-1 variables. i.e. . $f(x_1^1 | x_2^0, \dots , x_N^0) $. We then sample our second variable conditional on all the others $f(x_2^1 |x_1^1, x_3^0, \dots , x_N^0)$ , repeating this until we have sampled each variable. This ends one iteration of the Gibbs sampling algorithm. As we repeat these steps a large number of times the samples from the conditional distributions converge to the joint marginal distributions. Once we have M runs of the Gibbs sampler, the mean of our retained draws can be thought of as an approximation of the mean of the marginal distribution.
+Imagine we have a joint distribution of N variables: 
+$
+f(x_1, x_2, \dots ,x_N)
+$ 
+and we want to find the marginal distribution of each variable. If the form of these variables are unknown, however, it may be very difficult to calculate the necessary integrations analytically. In cases such as these, we take the following steps to implement the Gibbs algorithm. First, we need to initialise starting values for our variables, 
+$
+x_1^0 \dots x_N^0
+$
+
+Next we sample our first variable conditional on the current values of the other N-1 variables. i.e.
+$f(x_1^1 | x_2^0, \dots , x_N^0) $. 
+We then sample our second variable conditional on all the others 
+$f(x_2^1 |x_1^1, x_3^0, \dots , x_N^0)$ 
+, repeating this until we have sampled each variable. This ends one iteration of the Gibbs sampling algorithm. As we repeat these steps a large number of times the samples from the conditional distributions converge to the joint marginal distributions. Once we have M runs of the Gibbs sampler, the mean of our retained draws can be thought of as an approximation of the mean of the marginal distribution.
 
 Now that we have the theory out of the way, let's see how it works in practice. Below I will show the code for implementing a linear regression using the Gibbs sampler. In particular, I will estimate an AR(2) model on US Gross Domestic Product (GDP). I will then use this model to forecast GDP growth and make use of our Bayesian approach to construct confidence bands around our forecasts using quantiles from the posterior density i.e. quantiles from the retained draws from our algorithm.
 
@@ -131,7 +146,7 @@ B^0_2 \\
 0 \\
 0 \\
 0 \\
-\end{pmatrix} $
+\end{pmatrix}$
 
 
 
@@ -145,11 +160,13 @@ $\begin{pmatrix}
 1 &amp; 0 &amp; 0 \\
 0 &amp; 1 &amp; 0 \\
 0 &amp; 0 &amp; 1\\
-\end{pmatrix} $
+\end{pmatrix}$
 
 
 
-For sigma, we have set an inverse gamma prior. $p(\sigma^2)\sim \Gamma^{-1} (\dfrac{T_0}{2}, \dfrac{\theta_0}{2}) $. For this example, we have arbitrarily chosen T0 = 1 and theta0 = 0.1. These are often, however, set to small values in practice (Gelman 2006).  We could do robustness tests by changing our initial priors and seeing if it changes the posterior much. If we try and picture changing our theta0 value, a higher value would essentially give us a wider plot with our coefficient being more likely to take on larger values in absolute terms, similar to having a large prior variance on our Beta.
+For sigma, we have set an inverse gamma prior. 
+$p(\sigma^2)\sim \Gamma^{-1} (\dfrac{T_0}{2}, \dfrac{\theta_0}{2})$. 
+For this example, we have arbitrarily chosen T0 = 1 and theta0 = 0.1. These are often, however, set to small values in practice (Gelman 2006).  We could do robustness tests by changing our initial priors and seeing if it changes the posterior much. If we try and picture changing our theta0 value, a higher value would essentially give us a wider plot with our coefficient being more likely to take on larger values in absolute terms, similar to having a large prior variance on our Beta.
 
 Now we initialise some matrices to store our results. We create a matrix called out which will store all of our draws. It will need to have rows equal to the number of draws of our sampler, which in this case is equal to 10,000. We also need to create a matrix that will store the results of our forecasts. Since we are calculating our forecasts by iterating an equation of the form:
 
@@ -235,12 +252,12 @@ and the variance of our posterior is defined as:
 
 $
 V = (\Sigma_0^{-1}+ \dfrac{1}{\sigma^2}X_t'X_t)^{-1}
-\medskip
 $
 
 
 
-If we play around a bit with the second term in M, we can substitute our maximum likelihood estimator for $
+If we play around a bit with the second term in M, we can substitute our maximum likelihood estimator for 
+$
 Y_t
 $. Doing so gives us
 
@@ -258,8 +275,9 @@ Now that we have our draw of $B$, we draw sigma from the Inverse Gamma distribut
 
 The next line (38) stores our draws of the coefficients into our out matrix. We then use these draws to create our forecasts below this. The code essentially creates a matrix yhat, to store our forecasts for 12 periods into the future. Remember, we need a matrix of size 14 because we are using an AR(2) which requires using the last 2 observable data points. Our equation for a 1 step ahead forecast can be written as
 
-$ \hat{Y}_{t+1} = \alpha + B_1 \hat{Y}_{t} + B_2 \hat{Y}_{t-1} + \sigma v^*
-\vspace{2cm}$
+$ 
+\hat{Y}_{t+1} = \alpha + B_1 \hat{Y}_{t} + B_2 \hat{Y}_{t-1} + \sigma v^*
+$
 
 
 
