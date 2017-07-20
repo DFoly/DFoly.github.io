@@ -9,7 +9,7 @@ layout: default
 <h2 id="Portfolio">Portfolio</h2>
 <hr class="bar-blog"> </hr>
 
-  {% for post in site.categories[0] %}
+  {% for post in site.categories['portfolio'] %}
     <div class="post-header">
       <a href="{{post.url}}"><h1 class="post-title">{{ post.title }}</h1></a>
     </div>
