@@ -8,11 +8,8 @@ layout: default
 
 <h2 id="Portfolio">Portfolio</h2>
 <hr class="bar-blog"> </hr>
-{{ site.category[1] }}
 
-  {% for post in site.categories['portfolio'] %}
-    
-    
+  {% for post in site.categories[0] %}
     <div class="post-header">
       <a href="{{post.url}}"><h1 class="post-title">{{ post.title }}</h1></a>
     </div>
