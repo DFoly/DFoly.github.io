@@ -141,27 +141,26 @@ reps = 10000
 What we have done here is essentially set a normal prior for our Beta coefficients which have mean = 0 and variance = 1. For our mean we have priors:
 
 $\begin{pmatrix}
-\alpha_0 &
-B^0_1 &
-B^0_2 &
+\alpha_0 \\
+B^0_1  \\
+B^0_2  \\
 \end{pmatrix} = \begin{pmatrix}
-0 &
-0 &
-0 &
-\end{pmatrix}$
+0 \\
+0 \\
+0 \end{pmatrix}$
 
 
 
 And for our variance we have priors:
 
 $\begin{pmatrix}
-\Sigma_a& 0& 0 \\
-0& \Sigma_{B1}& 0 \\
-0& 0& \Sigma_{B2} \\
+\Sigma_a & 0 & 0 \\
+0 & \Sigma_{B1} & 0 \\
+0 & 0 & \Sigma_{B2} \\
 \end{pmatrix} = \begin{pmatrix}
-1& 0& 0 \\
-0& 1& 0 \\
-0& 0& 1\\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
 \end{pmatrix}$
 
 
@@ -190,10 +189,12 @@ T1 = nrow(X)
 
 #Main Loop
 for(i in 1:reps){
-  M = solve(solve(sigma0) + as.numeric(1/sigma2) * t(X) %*% X) %*%
-    (solve(sigma0) %*% B0 + as.numeric(1/sigma2) * t(X) %*% Y)
+  M = solve(solve(sigma0) + as.numeric(1/sigma2) 
+  * t(X) %*% X) %*% (solve(sigma0) %*%
+  B0 + as.numeric(1/sigma2) * t(X) %*% Y)
   
-  V = solve(solve(sigma0) + as.numeric(1/sigma2) * t(X) %*% X)
+  V = solve(solve(sigma0) + as.numeric(1/sigma2) *
+    t(X) %*% X)
   
   chck = -1
   while(chck < 0){   # check for stability
@@ -224,7 +225,8 @@ for(i in 1:reps){
   yhat[1:2] = Y[(end-1):end,]
   cfactor = sqrt(sigma2)
   for(m in 3:14){
-    yhat[m] = c(1,yhat[m-1],yhat[m-2]) %*% B + rnorm(1) * cfactor
+    yhat[m] = c(1,yhat[m-1],yhat[m-2]) %*% B + 
+    rnorm(1) * cfactor
   }
   out1[i,] <- yhat
 }
