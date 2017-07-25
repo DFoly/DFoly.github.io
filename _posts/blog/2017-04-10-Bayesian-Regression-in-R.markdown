@@ -141,13 +141,13 @@ reps = 10000
 What we have done here is essentially set a normal prior for our Beta coefficients which have mean = 0 and variance = 1. For our mean we have priors:
 
 $\begin{pmatrix}
-\alpha_0 \\
-B^0_1 \\
-B^0_2 \\
+\alpha_0 &
+B^0_1 &
+B^0_2 &
 \end{pmatrix} = \begin{pmatrix}
-0 \\
-0 \\
-0 \\
+0 &
+0 &
+0 &
 \end{pmatrix}$
 
 
@@ -155,13 +155,13 @@ B^0_2 \\
 And for our variance we have priors:
 
 $\begin{pmatrix}
-\Sigma_a &amp; 0 &amp; 0 \\
-0 &amp; \Sigma_{B1} &amp; 0 \\
-0 &amp; 0 &amp; \Sigma_{B2} \\
+\Sigma_a& 0& 0 \\
+0& \Sigma_{B1}& 0 \\
+0& 0& \Sigma_{B2} \\
 \end{pmatrix} = \begin{pmatrix}
-1 &amp; 0 &amp; 0 \\
-0 &amp; 1 &amp; 0 \\
-0 &amp; 0 &amp; 1\\
+1& 0& 0 \\
+0& 1& 0 \\
+0& 0& 1\\
 \end{pmatrix}$
 
 
