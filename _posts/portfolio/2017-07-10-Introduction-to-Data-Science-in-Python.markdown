@@ -9,7 +9,7 @@ tags: Coursera
 ---
 
 This Coursera Course covers an introduction to Data Science using Python.
-It provides and introduction to using Pandas to clean and preprocess data for analysis. The course then goes into performing various types of operations on data that is relevant in many types of analysis such as merging data, producing summary statistics. The final week of the course goes over statistical techniques such as distributions, sampling and t-tests. I provide links here to the assignments that I completed as part of the course.
+It provides an introduction to using Pandas to clean and preprocess data for analysis. The course then goes into performing various types of operations on data that is relevant in many types of analysis such as merging data and producing summary statistics. The final week of the course goes over statistical techniques such as distributions, sampling and t-tests. I provide links here to the assignments that I completed as part of the course.
 
 Below are links to the completed assignments in jupyter nbviewer.
 
