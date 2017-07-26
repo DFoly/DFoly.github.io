@@ -13,9 +13,9 @@ It provides an introduction to using Pandas to clean and preprocess data for ana
 
 Below are links to the completed assignments in jupyter nbviewer.
 
-Week 2 Assignment:[nbviewer](http://nbviewer.jupyter.org/github/DFoly/Introduction-to-Data-Science-Coursera/blob/master/Assignment2.ipynb)
+Week 2 Assignment: [nbviewer](http://nbviewer.jupyter.org/github/DFoly/Introduction-to-Data-Science-Coursera/blob/master/Assignment2.ipynb)
 
-Week 3 Assignment:[nbveiwer](http://nbviewer.jupyter.org/github/DFoly/Introduction-to-Data-Science-Coursera/blob/master/Assignment3.ipynb)
+Week 3 Assignment: [nbveiwer](http://nbviewer.jupyter.org/github/DFoly/Introduction-to-Data-Science-Coursera/blob/master/Assignment3.ipynb)
 
-Week 4 Assignment: In this assignment we merge and manipulate some datasets and test a hypothesis about the data. [nbviewer](http://nbviewer.jupyter.org/github/DFoly/Introduction-to-Data-Science-Coursera/blob/master/Assignment4.ipynb)
+Week 4 Assignment: In this assignment we merge and manipulate some datasets and test a hypothesis about the data: [nbviewer](http://nbviewer.jupyter.org/github/DFoly/Introduction-to-Data-Science-Coursera/blob/master/Assignment4.ipynb)
 
