@@ -8,7 +8,7 @@ featured_image: "../../assets/img/project.png"
 tags: Coursera
 ---
 
-This is a data science project taken from the book A collection of Data Science Take Home challenges by Guilio Palombo. It os a pretty interesting book with a variety of analytical challenges that you may face working as a data scientist.
+This is a data science project taken from the book A collection of Data Science Take Home challenges by Guilio Palombo. So far the book has been really helpful providing a wide range of different types of real world problems that a data scientist might run into. I look forward to trying more of the challenges in the book.
 
 This particular challenge involves trying to predict
 conversion rates on a website containing the following variables.
