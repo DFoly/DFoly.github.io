@@ -1,7 +1,9 @@
 ---
 layout: post
 title:  "China's Capital Flows"
+description: Economic Analysis of capital flows and debt in Chine
 date:   2017-02-09 16:51:11
+keywords: China, Economics, Debt, GDP, Growth, Bubble
 categories: blog
 ---
 

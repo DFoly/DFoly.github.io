@@ -2,6 +2,6 @@ name: Daniel Foley
 markdown: kramdown
 highlighter: rouge
 exclude: ["node_modules", "gulpfile.js", "package.json"]
-plugins:
-    - jekyll-seo-tag
+gems:
+    -jekyll-seo-tag
 

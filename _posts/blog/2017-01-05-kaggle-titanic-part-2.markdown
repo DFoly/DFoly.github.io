@@ -2,6 +2,8 @@
 layout: post
 mathjax: true
 title:  "Kaggle Titanic part 2 Model Estimation"
+description: Machine Learning Kaggle titanic dataset in R
+keywords: Kaggle, Titanic, R, Machine Learning, Data Analysis, Data Science
 date:   2017-01-05 18:11:16
 categories: blog
 ---

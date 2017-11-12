@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Kaggle: Titanic part 1 EDA"
+description: exploratory data anaylsis Kaggle titanic dataset in R
+keywords: Kaggle, Titanic, R, Machine Learning, Data Analysis, Data Science
 date:   2017-01-04 
 categories: blog
 ---

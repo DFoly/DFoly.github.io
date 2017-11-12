@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Introduction to Spark"
+description: Spark Tutorial word count analysis
+keywords: Spark, python, data, big data, word count
 date:   2017-03-24 
 categories: blog
 ---
