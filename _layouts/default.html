@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% if site.google_verify %}
+    <meta name="google-site-verification" content="{{       site.google_verify }}">
+      {% endif %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Daniel Foley</title>
