@@ -4,4 +4,3 @@ highlighter: rouge
 exclude: ["node_modules", "gulpfile.js", "package.json"]
 gems:
     -jekyll-seo-tag
-google_verify: 2D5zbZ2Vatb8CeFj1cUCRdJZ3SQatSUlQesml02jEPo
