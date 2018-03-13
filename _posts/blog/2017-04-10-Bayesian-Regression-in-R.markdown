@@ -84,7 +84,7 @@ $\alpha,B_1,B_2$ and $\sigma^2 $. As discussed above, we can do this by calculat
 
 The first thing we need to do is load in the data. For simplicity I am going to use the quantmod package in R to download GDP data from the Federal Reserve of St.Louis (FRED) website. I also transform it into growth rates.
 
-```pythpn
+```python
 library(quantmod)
 getSymbols("GDPC96", src = "FRED")
 data = <- na.omit(UNRATE)
@@ -96,7 +96,7 @@ data <- data[-1,] # lose one obs after differencing
 
 We get rid of any 'NA' data using the na.omit function and we define 2 lags of our variable (p=2). Next we define a function to create our X matrix which contains our lagged GDP rate and a constant term. This is a nice function to have as if you are doing any sort of matrix algebra you will need to organise your matrices into a form similar to this.
 
-```pythpn
+```python
 BregData <- function(data,p,constant){
 
   nrow <- as.numeric(dim(data)[1])
@@ -120,7 +120,7 @@ Our function takes in three parameters. The data, the number of lags and whether
 
 Our next bit of code implements our function and extracts the matrices and number of rows from our results list. We are also going to set up our priors for the Bayesian analysis.
 
-```pythpn
+```python
 results = list()
 results <- BregData(data,p,TRUE)
 
@@ -179,7 +179,7 @@ $Y_t = \alpha + B_1Y_{t-1} + B_2Y_{t-2} + \epsilon_t$
 
 We will need our last two observable periods to calculate the forecast. This means our second matrix out1 will have no. of forecast periods + number of lags, 14 in this case. We will also define our main function that calculates the Gibbs sampling algorithm in the next code snippet.
 
-```pythpn
+```python
 out = matrix(0, nrow = reps, ncol = nvar + 1)
 colnames(out) <- c('constant', 'beta1','beta2', 'sigma')
 out1 <- matrix(0, nrow = reps, ncol = 14)
@@ -291,7 +291,7 @@ In general, we will need a matrix of size n+p where n is the number of periods w
 
 Below I have plotted the posterior distribution of the coefficients. Notwithstanding a few outliers, they resemble a normal distribution. If we did enough draws of the algorithm, these figures would start to look more and more like the familiar bell shape of the normal distribution.
 
-```pythpn
+```python
 const <- coef[,1]
 beta1 <- coef[,2]
 beta2 <- coef[,3]
@@ -329,7 +329,7 @@ qplot(coef[,4], geom = "histogram", bins = 50,main = 'Distribution of Sigma')
 Since we are doing a Bayesian analysis, I decided to create a forecast with confidence bands around it. I found a very helpful 
 [BOE](https://gjabel.wordpress.com/2013/04/24/bank-of-england-fan-charts-in-r/)blog online which creates fancharts for forecasts very similar to the Bank of Englands Inflation reports. I make use of the fanplot library here and I adapted the code for my particular data which results in the plot below. It took a bit of playing around with some of the options to get a graph that looked reasonably nice so you may have to mess around with some of the values to get the aesthetic look you are after.
 
-```pythpn
+```python
 library(fanplot)
 forecasts_mean <- as.matrix(colMeans(forecasts))
 forecast_sd <- as.matrix(apply(forecasts,2,sd))
