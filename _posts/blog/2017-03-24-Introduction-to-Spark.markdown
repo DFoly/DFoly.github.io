@@ -111,7 +111,7 @@ Since we are using Hadoop we need to split our operations into a Mapper and a Re
 
 Since in the real world we are likely dealing with vast amounts of data that is distributed across different servers we need a way to group the data together. This is what the Mapper will do. It groups data into key value pairs which is then passed to the Reducer which combines this data into an output.
 
-Ok, so now what we know a bit about MapReduce, let's define our mapper function. Let's call it split_fileA. We need to have our function split the input line into a word and a count separated by a comma and return that.
+Ok, so now what we know a bit about MapReduce, let's define our mapper function. Let's call it split_fileA. We need to have our function split the input line into a word and a count separated by a comma and return a tuple.
 
 ```python
 def split_fileA(line):
@@ -132,7 +132,7 @@ split_fileA(test_line)
 this returns Out[]: ('could', 1001)
 which is exactly what we want.
 
-Now we can call the spark map method on using our defined mapper on 
+Now we can call the spark map method using our defined mapper on 
 fileA. We then use the collect function to display the results.
 
 
