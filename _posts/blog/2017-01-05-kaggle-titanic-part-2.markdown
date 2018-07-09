@@ -8,6 +8,8 @@ date:   2017-01-05 18:11:16
 categories: blog
 ---
 
+{% include advertising.html %}
+
 This is the second part of the Titanic Kaggle Competition. In this part I will train a few different models on our new dataset and see what kind of results we get. The first thing I need to do is split my data back up into training and test sets. Having a quick look at the data, the test set begins in row 892 where the Survived row is equal to NA and so we split the dataset here. I also take a random 90 10 split on the training set so I can test how well my models are doing before I submit them to kaggle.
 
 

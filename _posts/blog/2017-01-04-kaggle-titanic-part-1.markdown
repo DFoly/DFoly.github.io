@@ -7,6 +7,8 @@ date:   2017-01-04
 categories: blog
 ---
 
+{% include advertising.html %}
+
 This will be my attempt of trying to predict whether passengers on the titanic survived or died aboard the titanic. I will be using the famous titanic dataset available from 
 [Kaggle](https://www.kaggle.com/c/titanic)
 This analysis will be done in R.

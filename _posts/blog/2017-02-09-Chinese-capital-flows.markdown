@@ -7,6 +7,8 @@ keywords: China, Economics, Debt, GDP, Growth, Bubble
 categories: blog
 ---
 
+{% include advertising.html %}
+
 Economic Growth in China has slowed somewhat in recent times from the phenomenal growth experienced for much of the last 20 years. Most recently, in 2016, GDP growth of 6.7 per cent was recorded. It appears that China has now entered a new moderate phase of growth. This new era of growth has occurred as a result of a transition away from investment and export lead growth towards more sustainable growth that is anchored in services and consumer spending. This trend is set to continue with the latest forecasts from the IMF suggesting that China can expect GDP growth of 6.5 per cent in 2017 before expanding a further 6.0 per cent in 2017. This is in stark contrast to the average annual growth rate of 10 per cent since the 1980's.  Although the economy has clearly slowed down over the last few years , it is still among the highest in the world and far above some of the more advanced economies such as the UK and the US as shown in figure 1. It is interesting to note the particularly strong co-movement between the US and the UK which does not seem to be shared by China.
 
 Figure 1

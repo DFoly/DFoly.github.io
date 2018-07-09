@@ -7,22 +7,26 @@ featured: true
 featured_image: "../../assets/img/project.png"
 tags: Coursera
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+Below is a link to the coursework for the University of Washington Classification
+Machine Learning Specialisation. The link inlcudes the jupyter notebook implementations of the assignments. The course covers topics including logsitic regression, decision trees, regularisation and boosting.
 
-Jekyll also offers powerful support for code snippets:
+## Week 1: Linear Classifiers and Logistic Regression
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+###[Predicting sentiment from product reviews](http://nbviewer.jupyter.org/github/DFoly/Machine-Learning/blob/master/Python/Classification/Week%201/module-2-linear-classifier-assignment-blank.ipynb)
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].
+## Week 2: Learning Classifiers and Overfitting
 
-[jekyll]:      http://jekyllrb.com
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-help]: https://github.com/jekyll/jekyll-help
+###[Logistic Regression From Scratch](http://nbviewer.jupyter.org/github/DFoly/Machine-Learning/blob/master/Python/Classification/Week%202/module-3-linear-classifier-learning-assignment-blank.ipynb)
+---
+###[Logistic Regression with L2 regularization](http://nbviewer.jupyter.org/github/DFoly/Machine-Learning/blob/master/Python/Classification/Week%202/module-4-linear-classifier-regularization-assignment-blank.ipynb)
+
+## Week 3: Decision Trees Part 1
+
+###[Identifying safe loans with decision trees](http://nbviewer.jupyter.org/github/DFoly/Machine-Learning/blob/master/Python/Classification/Week%203/module-5-decision-tree-assignment-1-blank.ipynb)
+---
+###[Implementing binary decision trees](http://nbviewer.jupyter.org/github/DFoly/Machine-Learning/blob/master/Python/Classification/Week%203/module-5-decision-tree-assignment-2-blank.ipynb)
+
+## Week 4 Decision Trees Part 2
+###[Decision Trees in Practice](http://nbviewer.jupyter.org/github/DFoly/Machine-Learning/blob/master/Python/Classification/Week%204/module-6-decision-tree-practical-assignment-blank.ipynb)
+

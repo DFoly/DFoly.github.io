@@ -8,6 +8,7 @@ date:   2017-03-10 18:11:16
 categories: blog
 ---
 
+{% include advertising.html %}
 
 Today I am going to implement a Bayesian linear regression in R from scratch. This post is based on a very informative manual from the Bank of England on Applied Bayesian Econometrics. I have translated the original matlab code into R for this post since its open source and more readily available. Hopefully, by the end of this post, it will be clear how to undertake a Bayesian approach to regression and also understand the benefits of doing so.
 

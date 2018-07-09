@@ -7,6 +7,7 @@ date:   2017-03-24
 categories: blog
 ---
 
+{% include advertising.html %}
 
 I have been playing around with spark recently to become more familiar with big data and in particular the Hadoop framework. This post will be an introductory tutorial into using spark through the cloudera VM.
 
