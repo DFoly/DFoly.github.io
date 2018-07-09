@@ -211,7 +211,7 @@ for(i in 1:reps){
   # compute residuals
   resids <- Y- X%*%B
   T2 = T0 + T1
-  theta0 = theta1 + t(resids) %*% resids
+  theta1 = theta0 + t(resids) %*% resids
   
   #draw from Inverse Gamma
   z0 = rnorm(T1,1)
