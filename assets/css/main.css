@@ -653,7 +653,7 @@ header {
     margin: 30px 30px 30px; }
     header nav a {
       margin-left: 20px;
-      color: rgba(255, 255, 255, 0.5); }
+      color: rgba(255, 255, 255, 1); }
       @media only screen and (min-width: 220px) {
         header nav a {
           display: none; } }
@@ -700,7 +700,7 @@ header {
   header .kicker {
     text-align: center;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.5); }
+    color: rgba(255, 255, 255, 1); }
 
 footer {
   background: url(../img/ai2.jpg) center center;
