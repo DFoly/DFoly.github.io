@@ -1384,24 +1384,24 @@ form {
     #h_small #nav_small a {
       display: inline-block;
       margin-left: 10px;
-      color: rgba(0, 0, 0, 0.5); }
+      color: rgba(255, 255, 255, 0.5); }
       #h_small #nav_small a:hover {
         color: black; }
   #h_small #h1_small {
     display: inline-block;
     font-size: 72px;
     font-weight: 700;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.05cm; }
     #h_small #h1_small span {
       display: inline-block;
       padding: 0.2em 0.5em;
-      border: rgba(0, 0, 0, 0.5) solid 10px; }
+      border: rgba(255, 255, 255, 0.5) solid 10px; }
   #h_small .kicker {
     text-align: center;
     line-height: 1;
-    color: rgba(0, 0, 0, 0.5); }
+    color: rgba(255, 255, 255, 0.5); }
 
 .thumb-container {
   max-width: 960px;
