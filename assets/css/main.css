@@ -653,7 +653,7 @@ header {
     margin: 30px 30px 30px; }
     header nav a {
       margin-left: 20px;
-      color: rgba(0, 0, 0, 0.5); }
+      color: rgba(255, 255, 255, 0.5); }
       @media only screen and (min-width: 220px) {
         header nav a {
           display: none; } }
@@ -664,7 +664,7 @@ header {
         color: black; }
   header h1 {
     text-align: center;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.05cm;
     margin-bottom: 20px;
