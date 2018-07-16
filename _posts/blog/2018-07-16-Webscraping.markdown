@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Webscraping Wikipedia"
+title:  "Webscraping with Beautiful soup"
 description: bs4 and plotly GDP per capita
 keywords: bs4, python, plotly, wikipedia, GDP per capita
 date:   2018-07-16 17:40:00
@@ -11,10 +11,40 @@ plotly: true
 {% include advertising.html %}
 
 
+In this post I will use Beautiful soup to scrap a wikipedia page. In particular the main reason I wanted to do this was to get familiar with scraping html data and using this data to produce some further analysis and intersting visualisations.
+
+For this analysis I decided to try and scrape a simple table from the following wiki page: [Wiki](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita)
+
+The table in question is a ranking of countries by their GDP per capita. This seems like an easy task and bs4 does make this much simplier than it would be otherwise but it still takes a little bit of work in terms of searching for the correct data and cleaning it in order to do some nice visualisations.
+
+
+
+What is Beautiful Soup (bs4)
+[Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- what is BS4
+- basic html knowledge (tags)
+- table headers and td for cells
+
+
+
+
+- discuss wiki page
+- what is GDP per capita?
+- why is it useful
+
+
+Intro to Plotly...
+
+
 
 
 <!-- Top 20 Countries by GDP per capita -->
 <div id="154ac1ba-4a5f-41fa-9d58-8dbe8c316701" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("154ac1ba-4a5f-41fa-9d58-8dbe8c316701", [{"type": "bar", "x": ["Qatar", "Macau", "Luxembourg", "Singapore", "Brunei", "Ireland", "Norway", "Kuwait", "United Arab Emirates", "Switzerland", "Hong Kong", "San Marino", "United States", "Saudi Arabia", "Netherlands", "Iceland", "Bahrain", "Sweden", "Germany", "Australia"], "y": [124927, 114430, 109192, 90531, 76743, 72632, 70590, 69669, 68245, 61360, 61016, 60359, 59495, 55263, 53582, 52150, 51846, 51264, 50206, 49882]}], {"title": "Top 20 countries ranked by GDP per Capita"}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
+
+
+
+- Discuss the results
+- are any of these surprising?
 
 
 
@@ -23,6 +53,17 @@ plotly: true
 <!-- Bottom 20 countries ranked by GDP per capita -->
 <div id="5f93ead5-9669-4747-9349-b737e17007fa" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("5f93ead5-9669-4747-9349-b737e17007fa", [{"type": "bar", "x": ["Rwanda", "Guinea", "Kiribati", "Afghanistan", "Burkina Faso", "Haiti", "Guinea-Bissau", "Sierra Leone", "Gambia, The", "South Sudan", "Togo", "Comoros", "Madagascar", "Eritrea", "Mozambique", "Malawi", "Niger", "Liberia", "Burundi", "Congo, Dem. Rep.", "Central African Republic"], "y": [2081, 2039, 1958, 1889, 1884, 1810, 1806, 1791, 1686, 1503, 1612, 1560, 1554, 1434, 1266, 1172, 1153, 867, 808, 785, 681]}], {"title": "Worst 20 countries ranked by GDP per Capita"}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
 
+
+- one mistake here
+- seems to be misranked
+
+
+
+- How did I get these plots in here?
+- convert to jupyter markdown
+- jupyter notebook -- to markdown 
+notebookbname.ipynb
+- This generates nice html for you to embed the plotly interactive graphs into the jekyll markdown file.
 
 
 <!-- World GDP plot -->
