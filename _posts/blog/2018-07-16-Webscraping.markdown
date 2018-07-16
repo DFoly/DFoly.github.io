@@ -20,7 +20,10 @@ The table in question is a ranking of countries by their GDP per capita. This se
 
 
 What is Beautiful Soup (bs4)
+Beautiful soup is a python library for pulling data out of html and xml files. This makes the library extermely useful for extracting infor from webpages. For more info on how exactly the library works and the various tasks you can perform with beautiful soup, please read the documentation below.
 [Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+
+
 - what is BS4
 - basic html knowledge (tags)
 - table headers and td for cells
