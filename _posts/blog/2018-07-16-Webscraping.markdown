@@ -19,12 +19,12 @@ The table in question is a ranking of countries by their GDP per capita. This se
 
 
 
-What is Beautiful Soup (bs4)
+**What is Beautiful Soup?**
+
 Beautiful soup is a python library for pulling data out of html and xml files. This makes the library extermely useful for extracting infor from webpages. For more info on how exactly the library works and the various tasks you can perform with beautiful soup, please read the documentation below.
 [Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 
-- what is BS4
 - basic html knowledge (tags)
 - table headers and td for cells
 
@@ -36,7 +36,7 @@ Beautiful soup is a python library for pulling data out of html and xml files. T
 - why is it useful
 
 
-Intro to Plotly...
+**Intro to Plotly**
 
 
 
@@ -79,7 +79,7 @@ notebookbname.ipynb
 
 - Do richer countries tend to have higher life expectancy?
 - How fast have countries gotten richer and how fast have populations grown?
-- China is obviously a big outlier
+- China amd India is obviously a big outlier and economies boomedover the last few years
 
 
 <div id="2858c764-459d-4acc-902b-b497ef6047d0" style="height: 650px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";
