@@ -74,9 +74,6 @@ soup.title
 
 ```
 
- <title>List of countries by GDP (PPP) per capita - Wikipedia</title>
-
-
 Ok so it looks like it worked and we can now perform commands on the soup object and extract
 the data we want. I mentioned before that we were interested in the table tag. Below is the code to extract the all the tables from the wiki page.
 
