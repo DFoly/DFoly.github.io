@@ -95,29 +95,6 @@ The code above returns a list where each entry contains one of the tables on the
 
 <!-- HTML Table example -->
 
-[<table class="wikitable sortable" style="margin-left:auto;margin-right:auto;text-align: right">
-<tbody><tr>
-<th data-sort-type="number">Rank
-</th>
-<th>Country/Territory
-</th>
-<th>Int$
-</th></tr>
-<tr>
-<td>1</td>
-<td align="left"><span class="flagicon"><img alt="" class="thumbborder" data-file-height="550" data-file-width="1400" height="9" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/23px-Flag_of_Qatar.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/35px-Flag_of_Qatar.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/46px-Flag_of_Qatar.svg.png 2x" width="23"/>Â </span><a href="/wiki/Qatar" title="Qatar">Qatar</a></td>
-<td>124,927
-</td></tr>
-<tr>
-<td>â</td>
-<td align="left"><i><span class="flagicon"><img alt="" class="thumbborder" data-file-height="300" data-file-width="450" height="15" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/63/Flag_of_Macau.svg/23px-Flag_of_Macau.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/63/Flag_of_Macau.svg/35px-Flag_of_Macau.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/63/Flag_of_Macau.svg/45px-Flag_of_Macau.svg.png 2x" width="23"/>Â </span><a href="/wiki/Macau" title="Macau">Macau</a></i></td>
-<td>114,430
-</td></tr>
-<tr>
-<td>2</td>
-<td align="left"><span class="flagicon"><img alt="" class="thumbborder" data-file-height="600" data-file-width="1000" height="14" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/da/Flag_of_Luxembourg.svg/23px-Flag_of_Luxembourg.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/da/Flag_of_Luxembourg.svg/35px-Flag_of_Luxembourg.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/da/Flag_of_Luxembourg.svg/46px-Flag_of_Luxembourg.svg.png 2x" width="23"/>Â </span><a href="/wiki/Luxembourg" title="Luxembourg">Luxembourg</a></td>
-<td>109,192
-</td></tr>
 
 
 Now that we have the table it is just a matter of getting the country names and the GDP per capita.
@@ -142,6 +119,7 @@ Alright so the code above essentially finds all the tr tags which indicates the 
 <td align="left"><span class="flagicon"><img alt="" class="thumbborder" data-file-height="550" data-file-width="1400" height="9" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/23px-Flag_of_Qatar.svg.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/35px-Flag_of_Qatar.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Qatar.svg/46px-Flag_of_Qatar.svg.png 2x" width="23"/> </span><a href="/wiki/Qatar" title="Qatar">Qatar</a></td>
 <td>124,927
 </td></tr>
+
 
 Now all we need to do to get all the country names is to loop through table_rows, extract the data and append to a list. 
 
@@ -181,7 +159,6 @@ and there are commas and line breaks in each cell so we will need to fix this la
 
 
 ```python
-
 temp = GDP_PC.find_all('td')
 GDP_per_capita = [temp[i].get_text() for i in range(len(temp)) if "," in temp[i].get_text()]
 GDP_per_capita = [i for i in GDP_per_capita if '\xa0' not in i]
