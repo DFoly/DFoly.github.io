@@ -94,6 +94,7 @@ The code above returns a list where each entry contains one of the tables on the
 
 
 <!-- HTML Table example -->
+
 [<table class="wikitable sortable" style="margin-left:auto;margin-right:auto;text-align: right">
 <tbody><tr>
 <th data-sort-type="number">Rank
@@ -123,13 +124,16 @@ Now that we have the table it is just a matter of getting the country names and 
 To do this, we need to know about more about the structure of HTML tables. In partiuclar, we should know about the the th, tr and td. These tags stand for table header, table row and cell respectively.
 Ok so let's try extracting some of the data.
 
+
 ```python
 GDP_PC = table[0]
 table_rows = GDP_PC.find_all('tr')
 header = table_rows[1]
 
 table_rows[1].a.get_text()
+
 ```
+
 
 Alright so the code above essentially finds all the tr tags which indicates the rows of the table. We then get the header of the table and print it out to give the results below. We know that this corresponds to the country names and we extact the name we need using a.get_text(). We know form this initial bit of code. Each index in table_rows corresponds to a country and that the country name is located in the a tag. We can see this below and this is the same for each value of the index.
 
@@ -151,6 +155,7 @@ cols = [col.get_text() for col in header.find_all('th')]
 
 Python has a really nice succint way of coding these kindof loops as a list comprehension. Note I skip the first entry of table_rows as it does not correspond to a country. We also use a list comprehension to extract the column headers which will be useful later on. The above code is equivalent to the for loop below.
 
+
 ```python
 
 country = []
@@ -159,7 +164,9 @@ for i in range(len(table_rows))[1:]:
 
 ```
 
+
 Next up we move onto the td tag. This is where our GDP per capita data is stored in the table. The data is pretty messy however, and there are a number of workaround I need to implement to get the correct data out and into the right format. Let's take a quick look at one of the data points. 
+
 
 ```python
 temp = GDP_PC.find_all('td')
@@ -167,8 +174,10 @@ temp[5].get_text()
 
 ```
 
+
 This gives us '114,430\n'. We can see that all the data is defined as strings
 and there are commas and line breaks in each cell so we will need to fix this later. First let's concentrate on gettting the data into a list.
+
 
 
 ```python
@@ -198,6 +207,7 @@ The next line loops through this variable and grabs the text if it contains a co
 create a workaround for that which is what new_list and numbers are doing. Finally I append these entries onto the GDP_per_capita list and also generate a rank column which is just numbers from 1 to 192. This may not be the most efficient way of doing this and I might be overlooking a better way to do this but hey it worked so I am happy with it.
 
 After extracting the three columns, rank, countru and GDP per capita as lists we need to merge these together and create a pandas dataframe. This will make plotting and analysing the data much simpler. There is a handy function called zip that allows us to do this and I create two separate dataframes. One for the top 20 richest countries and one for the bottom twemty poorest countries.
+
 
 ```python
 
@@ -374,6 +384,7 @@ As mentioned before I will be using plotly to create really nice visualisations.
 
 
 
+
 ```python
 trace1 = go.Bar(
                 x = data1.Country,
@@ -385,6 +396,7 @@ layout = go.Layout(
 
 fig = go.Figure(data = data, layout = layout)
 py.offline.iplot(fig)
+
 ```
 
 <!-- Top 20 Countries by GDP per capita -->
@@ -394,6 +406,7 @@ py.offline.iplot(fig)
 
 - Discuss the results
 - are any of these surprising?
+
 
 
 
@@ -450,6 +463,7 @@ layout = dict(
 
 fig = go.Figure(data = data, layout = layout)
 py.offline.iplot(fig)
+
 
 ```
 
