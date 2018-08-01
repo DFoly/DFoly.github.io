@@ -359,8 +359,10 @@ We finally have our data ready to create some nice looking visualisations
 
 **Intro to Plotly**
 
-As mentioned before I will be using plotly to create what I think are really nice visualisations. I really like plotly and it is really easy to make pretty interactive plots. If you want to read the documentation and learn what kind of plots you can make with plotly go to the [Website](https://plot.ly/)
+As mentioned before I will be using plotly to create what I think are really nice visualisations. I really like this library and it is really easy to make pretty interactive plots. If you want to know about what kind of graphs you can create I encourage you to read the documentation [Website](https://plot.ly/)
 
+Below is the code to create a simple bar chart of the top 10 richest countries in the world.
+Pretty easy right? Essentially we just define our data and our layout and pass it to go.Figure. The same steps here apply to create all the different types of plots in plotly. Some of the results may or may not surprise you. For example, the top 10 is littered with countries heavily focused on producing oil such as Qatar and Kuwait who get approximately 70 and 94 per cent of government revenue from oil. Alot of these countries tend to have relatively small populations and large economies so it is not really surprising that they are very rich based on this measure.
 
 
 
@@ -382,11 +384,7 @@ py.offline.iplot(fig)
 <div id="154ac1ba-4a5f-41fa-9d58-8dbe8c316701" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("154ac1ba-4a5f-41fa-9d58-8dbe8c316701", [{"type": "bar", "x": ["Qatar", "Macau", "Luxembourg", "Singapore", "Brunei", "Ireland", "Norway", "Kuwait", "United Arab Emirates", "Switzerland", "Hong Kong", "San Marino", "United States", "Saudi Arabia", "Netherlands", "Iceland", "Bahrain", "Sweden", "Germany", "Australia"], "y": [124927, 114430, 109192, 90531, 76743, 72632, 70590, 69669, 68245, 61360, 61016, 60359, 59495, 55263, 53582, 52150, 51846, 51264, 50206, 49882]}], {"title": "Top 20 countries ranked by GDP per Capita 2017"}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
 
 
-
-- Discuss the results
-- are any of these surprising?
-
-
+Now for the poorest countries. Not surprsingly, these countries tend to be concentrated in Africa where populations tend to grow rapidly and the economies lag behind the more developed nations.  Before anyone points it out, there does seem to be a mistake in the wiki table as South Sudan is ranked incorrectly.
 
 
 ```python
@@ -407,16 +405,7 @@ py.offline.iplot(fig)
 <div id="5f93ead5-9669-4747-9349-b737e17007fa" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("5f93ead5-9669-4747-9349-b737e17007fa", [{"type": "bar", "x": ["Rwanda", "Guinea", "Kiribati", "Afghanistan", "Burkina Faso", "Haiti", "Guinea-Bissau", "Sierra Leone", "Gambia, The", "South Sudan", "Togo", "Comoros", "Madagascar", "Eritrea", "Mozambique", "Malawi", "Niger", "Liberia", "Burundi", "Congo, Dem. Rep.", "Central African Republic"], "y": [2081, 2039, 1958, 1889, 1884, 1810, 1806, 1791, 1686, 1503, 1612, 1560, 1554, 1434, 1266, 1172, 1153, 867, 808, 785, 681]}], {"title": "Worst 20 countries ranked by GDP per Capita 2017"}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
 
 
-- one mistake here
-- seems to be misranked
-
-
-- How did I get these plots in here?
-- convert to jupyter markdown
-- jupyter notebook -- to markdown 
-notebookbname.ipynb
-- This generates nice html for you to embed the plotly interactive graphs into the jekyll markdown file.
-
+After getting a quick overview of the top 10 and bottom 10 countries lets try and get a more broad overview looking at the world as a whole. A good way of doing this is by using a map. In plotly you can create choropleth maps which shade the different regions in based on some variable. In our case that is GDP per capita. The most important things to note about this code is the country names passed into the locations argument and the location mode argument. These must match for the plot to work. You can also use country codes and even longitude and latitude to achieve the same plot but I think this is probably the easiest way. Notice that plotly allows you to zoom in to particular regions for a closer look which is a really nice feature. 
 
 
 ```python
@@ -456,6 +445,111 @@ py.offline.iplot(fig)
 
 **Do People from Rich Nations Live Longer?**
 
+Ok no that I have shown you some simple plots using plotly I want to do something a bit more fun. There is a really nice library called bubbly which creates really nice bubble charts and has some really nice features to enhance the level of interactivity you can have with your charts. You can do this with plotly but there is quite a bit of coding involved to achieve the desired effect and bubbly makes it super easy. Credit to [Aashitak](https://github.com/AashitaK/bubbly) for this super cool library. There is also a nice [kaggle kernel](https://www.kaggle.com/aashita/guide-to-animated-bubble-charts-using-plotly) showing how the library works under the hood and is definitely worth checking out.
+
+
+
+
+
+```python
+
+gdp = pd.read_csv("gdp_per_capota.csv", engine = "python")
+life = pd.read_csv("LifeExp.csv", engine = "python")
+pop = pd.read_csv("population.csv",  engine = "python")
+
+
+countries = gapminder_indicators.country.unique()
+continents = gapminder_indicators.continent.unique()
+years = gapminder_indicators.year.unique()
+```
+
+
+```python
+# Filter countries first
+gdp_new = gdp[gdp['Country Name'].isin(countries)]
+life_new = life[life['Country Name'].isin(countries)]
+pop_new = pop[pop['Country Name'].isin(countries)]
+
+
+# # Now filter years
+years = [str(year) for year in years]
+years = years[6:]
+for i in ['2010', '2013', '2016']:
+     years.append(i)
+
+
+years.insert(0,"Country Name")
+years
+```
+
+
+
+
+
+```python
+gdp_new = gdp_new[years]
+life_new = life_new[years]
+pop_new = pop_new[years]
+```
+
+
+
+
+```python
+melted_gdp = pd.melt(gdp_new, id_vars = ["Country Name"], var_name = "Year", value_name = "Data")
+grouped_gdp = melted_gdp.groupby(["Country Name"]).apply(lambda x: x.sort_values(["Year"], ascending = True)).reset_index(drop=True)
+
+
+melted_life = pd.melt(life_new, id_vars = ["Country Name"], var_name = "Year", value_name = "Data")
+grouped_life = melted_life.groupby(["Country Name"]).apply(lambda x: x.sort_values(["Year"], ascending = True)).reset_index(drop=True)
+
+
+melted_pop = pd.melt(pop_new, id_vars = ["Country Name"], var_name = "Year", value_name = "Data")
+grouped_pop = melted_pop.groupby(["Country Name"]).apply(lambda x: x.sort_values(["Year"], ascending = True)).reset_index(drop=True)
+
+
+
+temp = pd.merge(grouped_gdp, grouped_life, on = ['Country Name', 'Year'], how = 'inner')
+temp = pd.merge(temp, grouped_pop, on = ['Country Name', 'Year'], how = 'inner')
+cols= ['Country Name', 'Year', 'Data_x', 'Data_y', 'Data']
+temp = temp[cols]
+
+data = temp.copy()
+
+```
+
+
+
+
+
+
+```python
+dictionary = dict(zip(gapminder_indicators['country'], gapminder_indicators['continent']))
+data["continent"] = data["Country Name"].map(dictionary)
+
+data.rename(columns = {'Data_x': 'GDP_pc', 'Data_y': 'Life Expectancy', 'Data': 'Population'}, inplace=True)
+```
+
+
+
+```python
+from bubbly.bubbly import bubbleplot 
+
+figure = bubbleplot(dataset=data, x_column='GDP_pc', y_column='Life Expectancy', 
+    bubble_column='Country Name', time_column='Year', size_column='Population', color_column='continent', 
+    x_title="GDP per Capita", y_title="Life Expectancy", title='Gapminder Global Indicators',
+    x_logscale=True, scale_bubble=3, height=650)
+
+iplot(figure, config={'scrollzoom': True})
+
+
+# figure = bubbleplot(dataset=gapminder_indicators, x_column='gdpPercap', y_column='lifeExp', 
+#     bubble_column='country', time_column='year', size_column='pop', color_column = 'continent',
+#     x_title="GDP per Capita", y_title="Life Expectancy", title='GDP per capita vs Population',
+#     x_logscale=True, scale_bubble=3, height=650)
+
+# iplot(figure, config={'scrollzoom': True})
+```
 <!--
 - Do richer countries tend to have higher life expectancy?
 - How fast have countries gotten richer and how fast have populations grown?
