@@ -510,12 +510,12 @@ pop_new = pop_new[years]
 The gapminder_indicator dataset has the data in the correct format (see below) for plotting so I essentialluy need to manipulate my three datasets into the same format and merge them together before I can plot them using bubbly.
 
 
-	country	continent	year	lifeExp		pop			gdpPercap
-	Afghanistan	Asia	1952	28.801		8425333		779.445314
-	Afghanistan	Asia	1957	30.332		9240934		820.853030
-	Afghanistan	Asia	1962	31.997		10267083	853.100710
-	Afghanistan	Asia	1967	34.020		11537966	836.197138
-	Afghanistan	Asia	1972	36.088		13079460	739.981106
+	country		 continent	year	lifeExp		pop			gdpPercap
+	Afghanistan	 Asia		1952	28.801		8425333		779.445314
+	Afghanistan	 Asia		1957	30.332		9240934		820.853030
+	Afghanistan	 Asia		1962	31.997		10267083	853.100710
+	Afghanistan	 Asia		1967	34.020		11537966	836.197138
+	Afghanistan	 Asia		1972	36.088		13079460	739.981106
 
 
 The world banks data set is formatted differently with the population for each year being allocated a different column. Below is the code I use to manipulate the world bank data into the correct format.
