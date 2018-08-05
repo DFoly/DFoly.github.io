@@ -511,21 +511,21 @@ The gapminder_indicator dataset has the data in the correct format (see below) f
 
 
 	country	continent	year	lifeExp		pop			gdpPercap
-0	Afghanistan	Asia	1952	28.801		8425333		779.445314
-1	Afghanistan	Asia	1957	30.332		9240934		820.853030
-2	Afghanistan	Asia	1962	31.997		10267083	853.100710
-3	Afghanistan	Asia	1967	34.020		11537966	836.197138
-4	Afghanistan	Asia	1972	36.088		13079460	739.981106
+	Afghanistan	Asia	1952	28.801		8425333		779.445314
+	Afghanistan	Asia	1957	30.332		9240934		820.853030
+	Afghanistan	Asia	1962	31.997		10267083	853.100710
+	Afghanistan	Asia	1967	34.020		11537966	836.197138
+	Afghanistan	Asia	1972	36.088		13079460	739.981106
 
 
 The world banks data set is formatted differently with the population for each year being allocated a different column. Below is the code I use to manipulate the world bank data into the correct format.
 
-Country name 		1960		1961		1962
-0	Aruba			54211.0		55438.0		56225.0
-1	Afghanistan		8996351.0	9166764.0	9345868.0
-2	Angola			5643182.0	5753024.0	5866061.0
-3	Albania			1608800.0	1659800.0	1711319.0
-4	Andorra			13411.0		14375.0		15370.0
+	Country name 		1960		1961		1962
+	Aruba				54211.0		55438.0		56225.0
+	Afghanistan			8996351.0	9166764.0	9345868.0
+	Angola				5643182.0	5753024.0	5866061.0
+	Albania				1608800.0	1659800.0	1711319.0
+	Andorra				13411.0		14375.0		15370.0
 
 
 ```python
