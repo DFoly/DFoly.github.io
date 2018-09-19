@@ -3,7 +3,7 @@ layout: post
 title: Visualising Economic Data using Plotly
 description: bs4 and plotly GDP per capita
 keywords: 'bs4, python, plotly, wikipedia, GDP per capita'
-date: {}
+date: 2018-08-10T18:11:16.000Z
 categories: blog
 plotly: true
 published: true
@@ -459,11 +459,7 @@ What I want to do here is create a bubble chart looking at GDP per capita vs lif
 wants to check it out.
 
 
-For this analysis I use world bank data. This is in a completely different format then the gapminder_indicator dataset on kaggle. To use the bubble library we need to data to be in the format
-of the latter so there is a bit of data manipulation required. The reason I used the world bank data
-is that it has a slightly longer time series and wanted to get a view of more recent developments.
-The code below loads the datasets in and we extract the countries used in the gapminder dataset
-from the world bank dataset to make things easier.
+For this analysis I use data from the world bank. This is in a completely different format then the gapminder_indicator dataset on kaggle. To use the bubble library we need to data to be in the format of the latter so there is a bit of data manipulation required. The reason I used the world bank data is that it has a slightly longer time series and wanted to get a view of more recent developments. The code below loads the datasets in and we extract the countries used in the gapminder dataset from the world bank dataset to make things easier.
 
 
 
@@ -516,7 +512,7 @@ life_new = life_new[years]
 pop_new = pop_new[years]
 ```
 
-The gapminder_indicator dataset has the data in the correct format (see below) for plotting so I essentialluy need to manipulate my three datasets into the same format and merge them together before I can plot them using bubbly.
+The gapminder_indicator dataset has the data in the correct format (long format, see below) for plotting so I essentialluy need to manipulate my three datasets into the same format and merge them together before I can plot them using bubbly.
 
 
 	country		 continent	year	lifeExp		pop			gdpPercap
@@ -527,7 +523,7 @@ The gapminder_indicator dataset has the data in the correct format (see below) f
 	Afghanistan	 Asia		1972	36.088		13079460	739.981106
 
 
-The world banks data set is formatted differently with the population for each year being allocated a different column. Below is the code I use to manipulate the world bank data into the correct format.
+The world banks data set is formatted differently with the population for each year being allocated a different column (wide format). Below is the code I use to manipulate the world bank data into the correct format.
 
 	Country name 		1960		1961		1962
 	Aruba				54211.0		55438.0		56225.0
@@ -561,7 +557,7 @@ data = temp.copy()
 ```
 
 
-Let me explain what I am doing here. The melt function allows me to collapse all the year columns into one row alongside the values for each year in the values row. I then groupby by the country names and sort each row by year so I am left with a dataset that has the country and year sorted chronologically. This is the same as the gapminder_indicators. I then merge datasets together on the country name and year and am left with the dataset in the correct format. I just need to drop a few columns that were added on when I used the merge function.
+Let me explain what I am doing here. The melt function allows me to collapse all the year columns into one row alongside the values for each year in the values row. I then groupby by the country names and sort each row by year so I am left with a dataset that has the country and year sorted chronologically. This is the same as the gapminder_indicators. I then merge datasets together on the country name and year and am left with the dataset in the correct format. I just need to drop a few columns that were added on when I used the merge function. I think you may be able to this in one pandas function but I decided to do it in a bit more of a manual way as it is good practice to think about how you need to manipulate your data.
 
 
 The other thing I need to do now is to create a continent column which maps the country to the correct continent as I want to use this information in my plot. To do this I create dictionary using the gapminder dataset and then map this dictionary to a new column in my merged dataset.
