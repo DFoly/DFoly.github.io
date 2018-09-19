@@ -112,7 +112,7 @@ table_rows[1].a.get_text()
 ```
 
 
-The code above essentially finds all the tr tags which indicates the rows of the table. We then get the header of the table and print it out to give the results below. We know that this corresponds to the country names and we extact the name we need using a.get_text(). We know this from the initial bit of code. Each index in table_rows corresponds to a country and that the country name is located in the a tag. This is the same for each value of the index.
+The code above essentially finds all the tr tags which indicates the rows of the table. We then get the header of the table and print it out to give the results below. This corresponds to the country names and we extact the name we need using a.get_text(). We know this from the initial bit of code. Each index in table_rows corresponds to a country and that the country name is located in the a tag. This is the same for each value of the index.
 
 
 
@@ -185,9 +185,9 @@ rank = list(range(len(countries)))
 There is alot going on in the code above so let's go through it step by step.
 The first thing I do is find all the cells in GDP_PC and store in a temp variabe.
 The next line loops through this variable and grabs the text if it contains a comma. I did this since most of the entries are in the thousands and therefore contain a comma. This approach does however miss the last four entries as they are hundreds of dollars so I have to 
-create a workaround for that which is what new_list and numbers are doing. Finally I append these entries onto the GDP_per_capita list and also generate a rank column which is just numbers from 1 to 192. This may not be the most efficient way of doing this and I am likely  overlooking a better way to do this but hey it worked so I am happy with it.
+create a workaround for that which is what new_list and numbers are doing. Finally I append these entries onto the GDP_per_capita list and also generate a rank column which is just numbers from 1 to 192. This may not be the most efficient way of doing this and there is probably better way but hey it worked so I am happy with it.
 
-After extracting the three columns, rank, country and GDP per capita as lists we need to merge these together and create a pandas dataframe. This will make plotting and analysing the data much simpler. There is a handy function called zip that allows us to do this and I create two separate dataframes. One for the top 20 richest countries and one for the bottom twenty poorest countries.
+After extracting the three columns, rank, country and GDP per capita as lists we need to merge these together and create a pandas dataframe. This will make plotting and analysing the data much simpler. There is a handy function called zip that allows us to do this and I create two separate dataframes. One for the top 20 richest countries and one for the bottom twenty poorest countries. The code below implements this.
 
 
 ```python
@@ -346,10 +346,8 @@ data2 = pd.DataFrame(list(data2), columns = cols)
 </div>
 
 
-
-
 From the table above it looks like the code worked and we now have our top and bottom 20 countries in pandas dataframes. Before we can plot the data we need to do a little bit more cleaning.
-
+The data are currently defined as strings so we need to fix this in order to use certain Pandas functions. The code below removes HTML line breaks "\n", commas and defines the data type as int. 
 
 ```python
 
@@ -360,12 +358,11 @@ data1['GDP Per Capita'] = data1['GDP Per Capita'].apply(lambda x: x.replace(',',
 We finally have our data ready to create some nice looking visualisations.
 
 
-
 **Intro to Plotly**
 
 As mentioned before I will be using plotly to create what I think are really nice visualisations. I really like this library and it is simple enough to make pretty interactive plots. If you want to know about what kind of graphs you can create I encourage you to read the documentation [Website](https://plot.ly/)
 
-Below is the code to create a simple bar chart of the top 10 richest countries in the world. First we pass the data to the go.Bar to create a br chart containing the country names on the x axis and the GDP per capita on the y axis. We then store this in a list and it gets passed to the go.Figure method. The same steps here apply to create all the different types of plots in plotly. Some of the results may or may not surprise you. For example, the top 10 is littered with countries heavily focused on producing oil such as Qatar and Kuwait who get approximately 70 and 94 per cent of government revenue from oil. Alot of these countries tend to have relatively small populations and large economies so it is not really surprising that they are very rich based on this measure.
+Below is the code to create a simple bar chart of the top 10 richest countries in the world. First we pass the data to go.Bar to create a br chart containing the country names on the x axis and the GDP per capita on the y axis. We then store this in a list and it gets passed to the go.Figure method. The same steps here apply to create all the different types of plots in plotly. Some of the results may or may not surprise you. For example, the top 10 is littered with countries heavily focused on producing oil such as Qatar and Kuwait who get approximately 70 and 94 per cent of government revenue from oil. Alot of these countries tend to have relatively small populations and large economies so it is not really surprising that they are very rich based on this measure (alot of wealth to share out among a relatively small population).
 
 
 
@@ -383,12 +380,13 @@ py.offline.iplot(fig)
 
 ```
 
+
 <!-- Top 20 Countries by GDP per capita -->
 <div id="154ac1ba-4a5f-41fa-9d58-8dbe8c316701" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("154ac1ba-4a5f-41fa-9d58-8dbe8c316701", [{"type": "bar", "x": ["Qatar", "Macau", "Luxembourg", "Singapore", "Brunei", "Ireland", "Norway", "Kuwait", "United Arab Emirates", "Switzerland", "Hong Kong", "San Marino", "United States", "Saudi Arabia", "Netherlands", "Iceland", "Bahrain", "Sweden", "Germany", "Australia"], "y": [124927, 114430, 109192, 90531, 76743, 72632, 70590, 69669, 68245, 61360, 61016, 60359, 59495, 55263, 53582, 52150, 51846, 51264, 50206, 49882]}], {"title": "Top 20 countries ranked by GDP per Capita 2017"}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
 
 
 
-Pretty easy right? Now for the poorest countries. Not surprsingly, these countries tend to be concentrated in Africa where populations tend to grow rapidly and the economies lag behind the more developed nations.  Before anyone points it out, there does seem to be a mistake in the wiki table as South Sudan is ranked incorrectly.
+Pretty easy right? Now for the poorest countries. Not surprsingly, these countries tend to be concentrated in Africa where populations tend to grow rapidly and the economies lag behind the more developed nations.
 
 
 
@@ -407,14 +405,13 @@ py.offline.iplot(fig)
 ```
 
 <!-- Bottom 20 countries ranked by GDP per capita -->
-<div id="5f93ead5-9669-4747-9349-b737e17007fa" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("5f93ead5-9669-4747-9349-b737e17007fa", [{"type": "bar", "x": ["Rwanda", "Guinea", "Kiribati", "Afghanistan", "Burkina Faso", "Haiti", "Guinea-Bissau", "Sierra Leone", "Gambia, The", "South Sudan", "Togo", "Comoros", "Madagascar", "Eritrea", "Mozambique", "Malawi", "Niger", "Liberia", "Burundi", "Congo, Dem. Rep.", "Central African Republic"], "y": [2081, 2039, 1958, 1889, 1884, 1810, 1806, 1791, 1686, 1503, 1612, 1560, 1554, 1434, 1266, 1172, 1153, 867, 808, 785, 681]}], {"title": "Worst 20 countries ranked by GDP per Capita 2017"}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
-
+<div id="5f93ead5-9669-4747-9349-b737e17007fa" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("5f93ead5-9669-4747-9349-b737e17007fa", [{"type": "bar", "x": ["Rwanda", "Guinea", "Kiribati", "Afghanistan", "Burkina Faso", "Haiti", "Guinea-Bissau", "Sierra Leone", "South Sudan","Gambia, The", "Togo", "Comoros", "Madagascar", "Eritrea", "Mozambique", "Malawi", "Niger", "Liberia", "Burundi", "Congo, Dem. Rep.", "Central African Republic"], "y": [2081, 2039, 1958, 1889, 1884, 1810, 1806, 1791, 1686, ,1612, 1503, 1560, 1554, 1434, 1266, 1172, 1153, 867, 808, 785, 681]}], {"title": "Worst 20 countries ranked by GDP per Capita 2017"}, {"linkText": "Export to plot.ly", "showLink": true})});</script>
 
 
 
 After getting a quick overview of the top 10 and bottom 10 countries lets try and get a more broad overview looking at the world as a whole. A good way of doing this is by using a map. In plotly you can create choropleth maps which shade the different regions based on some variable. In our case that is GDP per capita. Countries with a higher GDP per capita will have a darker shade of red. The most important things to note about this code is the country names passed into the locations argument and the location mode argument. These must match for the plot to work. You can also use country codes and even longitude and latitude to achieve the same plot but I think this is probably the easiest way. Notice that plotly allows you to zoom in to particular regions for a closer look which is a really nice feature. 
 
-We can see that in the richest countries tend to be centered in North America and Europe while the poorest countries are in Africa denoted by the lighter colour.
+We can see that in the richest countries tend to be centered in North America and Europe while the poorest countries are in Africa denoted by the lighter colour. 
 
 
 ```python
@@ -456,9 +453,17 @@ py.offline.iplot(fig)
 **Do People from Rich Nations Live Longer?**
 
 
-Ok no that I have shown you some simple plots using plotly I want to do create something a bit more interactive. There is a really nice library called bubbly which creates bubble charts and has some interesting features to enhance the level of interactivity you can have with your charts. You can do this with plotly but there is quite a bit of coding involved to achieve the desired effect and bubbly makes it super easy. Credit to [Aashitak](https://github.com/AashitaK/bubbly) for this library. There is also a nice [kaggle kernel](https://www.kaggle.com/aashita/guide-to-animated-bubble-charts-using-plotly) showing how the library works under the hood and is definitely worth checking out.
+Ok now that I have shown you some simple plots using plotly I want to go a step further and create something really cool. There is a really nice library called bubbly which creates bubble charts and has some interesting features to enhance the level of interactivity you can have with your charts. You can do this with plotly but there is quite a bit of coding involved to achieve the desired effect and bubbly makes it super easy. Credit to [Aashitak](https://github.com/AashitaK/bubbly) for this library. There is also a nice [kaggle kernel](https://www.kaggle.com/aashita/guide-to-animated-bubble-charts-using-plotly) showing how the library works under the hood and is definitely worth checking out.
 
-What I want to do here is create a bubble chart looking at GDP per capita vs life expectancy. The chart also takes into acccount the population for each country and what continent the country is in. I obtained all of the data from the world bank website. Below is the code to read the data in using pandas and I create list of unique values of the countries, continents and years which will be useful for manipulating the data. 
+What I want to do here is create a bubble chart looking at GDP per capita vs life expectancy. The chart also takes into acccount the population for each country and what continent the country is in. I obtained all of the data from the world bank website. Below is the code to read the data in using pandas and I create list of unique values of the countries, continents and years which will be useful for manipulating the data. As it turns out this is a pretty famous visualisation created by the gapminder foundation. They have a really nice tool which plots this and other charts available [Here](https://www.gapminder.org/tools/#$state$marker$select@$geo=bgd&trailStartTime=2018;&$geo=bol&trailStartTime=2018;;;;&chart-type=bubbles) if anyone 
+wants to check it out.
+
+
+For this analysis I use world bank data. This is in a completely different format then the gapminder_indicator dataset on kaggle. To use the bubble library we need to data to be in the format
+of the latter so there is a bit of data manipulation required. The reason I used the world bank data
+is that it has a slightly longer time series and wanted to get a view of more recent developments.
+The code below loads the datasets in and we extract the countries used in the gapminder dataset
+from the world bank dataset to make things easier.
 
 
 
@@ -476,7 +481,7 @@ years = gapminder_indicators.year.unique()
 ```
 
 
-I use the gapminder_indicators dataset (available on kaggle) to extract a selection of countries and a selection of years to plot. I then filter the three datasets to use only the columns in the years list as below.
+
 
     ['Country Name',
      '1982',
@@ -556,7 +561,7 @@ data = temp.copy()
 ```
 
 
-Let me explain what I am doing here. The melt function allows me to collapse all the year columns into one row alongside the values for each year in the values row. I then groupby by the country names and sort each row by year so I am left with a dataset that has the country and year sorted chronologically. This is broadly the same as the gapminder_indicators. I then merge datasets together on the country name and year and am left with the dataset in the correct format. I just need to drop a few columns that were added on when I used the merge function.
+Let me explain what I am doing here. The melt function allows me to collapse all the year columns into one row alongside the values for each year in the values row. I then groupby by the country names and sort each row by year so I am left with a dataset that has the country and year sorted chronologically. This is the same as the gapminder_indicators. I then merge datasets together on the country name and year and am left with the dataset in the correct format. I just need to drop a few columns that were added on when I used the merge function.
 
 
 The other thing I need to do now is to create a continent column which maps the country to the correct continent as I want to use this information in my plot. To do this I create dictionary using the gapminder dataset and then map this dictionary to a new column in my merged dataset.
@@ -570,12 +575,12 @@ data.rename(columns = {'Data_x': 'GDP_pc', 'Data_y': 'Life Expectancy', 'Data': 
 
 ```
 
-Finally we have a finished dataset and we can create our plot. We use the bubbleplot function in the bubbly library to do this. The function creates a beautiful interactive plot of life expectancy vs GDP per capita and plots the size of the bubble according to the population of the country. The bubbles are also coloured by the continent and we haev been able to plot all of this information across time which is really nice and allows us to look at the evolution of different countries since the early 1980's. The most notable changes are China and India indicated by the largest purple bubbles. At the start of the sample they were among the poorest countries and had a relatively low life expectancy.
-Over time, however, the made a substantial move towards the upper right of the chart indicating large increases in both GDP per capita and life expectancy.
+Finally we have a finished dataset and we can create our plot. We use the bubbleplot function in the bubbly library to do this. The function creates a beautiful interactive plot of life expectancy vs GDP per capita and plots the size of the bubble according to the population of the country. The bubbles are also coloured by the continent and we are able to plot all of this information across time which is really nice. The most notable changes are China and India indicated by the largest purple bubbles. At the start of the sample they were among the poorest countries and had a relatively low life expectancy.
+Over time, however, the made a substantial move towards the upper right of the chart indicating large increases in both GDP per capita and life expectancy. This pretty much mirrors what we have seen with China becoming and economic powerhouse over the last 20 or so years.
 
-What is also clear from the chart is that there is a clear positive correlation between GDP per capita and Life Expectancy. As one increases the other also tends to increase. Of course this tells us nothing about any causative relationship and it is unclear whether if countries have higher life expectancy because they are rich or ountries are rich because they have higher life expectancy. That is perhaps a question for an economics research paper. 
+What is also clear from the chart is that there is a positive correlation between GDP per capita and Life Expectancy. As one increases the other also tends to increase. Of course this tells us nothing about any causal relationship and it is unclear whether if countries have higher life expectancy because they are rich or ountries are rich because they have higher life expectancy. That is perhaps a question for an economics research paper and not this particular blog post.
 
-So that is how you can extract data from the internet using beautiful soup and also how to use data visualisations to interpret and uncover trends in the data which might not be immediately obvious looking at the raw data.
+So that is how you can extract data from the internet using beautiful soup and also how to use data visualisations to interpret and uncover trends in data which might not be immediately obvious looking at the raw data.
 
 
 
