@@ -1,23 +1,26 @@
 ---
 layout: post
-title:  "Visualising Economic Data using Plotly"
+title: Visualising Economic Data using Plotly
 description: bs4 and plotly GDP per capita
-keywords: bs4, python, plotly, wikipedia, GDP per capita
-date:   2018-07-16 17:40:00
+keywords: 'bs4, python, plotly, wikipedia, GDP per capita'
+date: {}
 categories: blog
 plotly: true
+published: true
 ---
 
 {% include advertising.html %}
 
 
-In this post I will use a variety of python libraries to scrape and visualise economic data. The main reason I wanted to do this was to get familiar with scraping html data and using this data to produce some further analysis and intersting visualisations.
+Since I am an Economist by training and love programming and data science I wanted to combine these passions and do some fun data analysis. This post makes use of a variety of python libraries and to scrape and visualise economic data. I hope this is useful to some of you and that you enjoy reading
+this as much as I did doing it. The first thing I need to do is get some data. Since Wikipedia is
+the source of all internet knowledge (not!!) let's start there.
 
 I decided to scrape a table from the following wikipedia page: [Wiki](https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita)
 
-Since I studied and am interested in economics I thought it would be a good idea to look at some of the richest and poortest countries in the world. The table in question ranks countries by their GDP per capita. 
+Since I spend alot of my time doing economics I thought it would be a good idea to look at some of the richest and poortest countries in the world. The table in question ranks countries by their GDP per capita. 
 
-Before I go any further it is probably a good idea to give a brief explanation of what GDP per capita is. Simply put, it is a measure of how wealthy a country is. It is essentially the value of all the goods and services produced within a countries borders in one year divided by the population. This gives us a way of describing the average level of wealth per person in that country. It is quite an important economic variable and is often used to compare wealth levels across countries and across time.
+Before I go any further it is probably a good idea to give a brief explanation of what GDP per capita is (you tend to take for granted that alot of people don't really speak "economics"). Simply put, it is a measure of how wealthy a country is. It is essentially the value of all the goods and services produced within a countries borders in one year divided by the population. This gives us a way of describing the average level of wealth per person in that country. It is quite an important economic variable and is often used to compare wealth levels across countries and across time.
 
 In general, GDP per capita can increase for the following reasons.
 1. GDP increases
@@ -26,7 +29,8 @@ In general, GDP per capita can increase for the following reasons.
 
 This measure is thought to be a better indication of a countries wealth over using just GDP. The reason for this is that we could have a situation where GDP growth in the year was positive but GDP per capita fell because the population grew at a faster rate. This is one of the the reasons using only GDP could paint a misleading economic picture. These discrepancies can be particularly large in countries with large annual population growth such as Nigeria or India. So now we have the brief econ primer out of the way lets dig into the analysis.
 
-Since I will be scrapping data from wikipedia I will be using Beautiful soup. This library simplifies the task of extracting data from webpages and is the go to library for web scraping in python.
+Since I will be scrapping data from wikipedia using Beautiful soup seems like a no brainer. This library greatly simplifies extracting data from webpages and is the go to library for web scraping in python.
+
 
 **What is Beautiful Soup?**
 
@@ -35,7 +39,7 @@ Beautiful soup is a python library for pulling data out of html and xml files. T
 
 In order to use beautifu soup it is worth knowing some simple html tags. Having a little bit of knowledge of html will make it a great deal easier to search for the data we want. For example, Wikipedia uses a table tag for the tables it displays on its web pages. Knowing this, we can simply parse the html and look only for information contained within these tags.
 
-First off I need to import all the neccessary libraries for the analysis. I will be using BeautifulSoup, plotly and a library called bubbly for creating nice interactive charts.
+First off I need to import all the neccessary libraries for the analysis. I will be using BeautifulSoup, plotly and a library called bubbly for creating nice interactive charts (more on this later).
 
 
 
@@ -65,6 +69,7 @@ Now that I have loaded the libraries in I can start the analysis.
 The code below allows us to load the webpage into our jupyter notebook and pass
 it to the BeautifulSoup class to create a soup object.
 
+
 ```python
 
 req = requests.get("https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(PPP)_per_capita")
@@ -91,7 +96,6 @@ The code above returns a list where each entry contains one of the tables on the
 
 
 <!-- HTML Table example -->
-
 
 
 Now that we have the table it is just a matter of getting the country names and the GDP per capita.
