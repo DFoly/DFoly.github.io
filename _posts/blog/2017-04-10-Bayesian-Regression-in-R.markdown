@@ -4,7 +4,7 @@ mathjax: true
 title: Bayesian Regression in R
 description: estimating a bayesian regression in R forecasting inflation
 keywords: 'inflation, R, Bayesian, Bank of England, Forecast'
-date: {}
+date: 2018-09-10T18:11:16.000Z
 categories: blog
 published: true
 ---
