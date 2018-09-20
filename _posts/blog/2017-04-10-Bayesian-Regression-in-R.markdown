@@ -383,4 +383,4 @@ abline(v = y0 + 1.75, lty = 2)  #2 year line
 
 ![BOE](/assets/img/fanplot.png)
 
-The confidence bands are pretty large as you can see and so, not surprisingly using an AR(2) model may not be the best choice. I am sure better models could be created by incorporating more variables into a Vector Auto Regression framework. I will leave to that for another post though.
+The confidence bands are pretty large as you can see and so, not surprisingly using an AR(2) model may not be the best choice. I am sure better models could be created by incorporating more variables into a Vector Auto Regression framework but I think this is fine for the purposes of an introduction to Bayesian estimation.
