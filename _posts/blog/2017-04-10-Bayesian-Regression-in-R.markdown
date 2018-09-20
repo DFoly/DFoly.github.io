@@ -1,18 +1,19 @@
 ---
 layout: post
 mathjax: true
-title:  "Bayesian Regression in R"
+title: Bayesian Regression in R
 description: estimating a bayesian regression in R forecasting inflation
-keywords: inflation, R, Bayesian, Bank of England, Forecast
-date:   2017-03-10 18:11:16
+keywords: 'inflation, R, Bayesian, Bank of England, Forecast'
+date: {}
 categories: blog
+published: true
 ---
 
 {% include advertising.html %}
 
 Today I am going to implement a Bayesian linear regression in R from scratch. This post is based on a very informative manual from the Bank of England on Applied Bayesian Econometrics. I have translated the original matlab code into R for this post since its open source and more readily available. Hopefully, by the end of this post, it will be clear how to undertake a Bayesian approach to regression and also understand the benefits of doing so.
 
-Ok lets get started. Ordinarily, If one wanted to estimate a linear regression of the matrix form:
+Ok lets get started. Ordinarily, If someone wanted to estimate a linear regression of the matrix form:
 
 $Y_t = B X_t + \epsilon_t$
 
