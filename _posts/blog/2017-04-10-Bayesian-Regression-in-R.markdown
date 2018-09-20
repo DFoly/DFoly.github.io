@@ -20,15 +20,14 @@ $Y_t = B X_t + \epsilon_t$
 $\epsilon_t \sim N(0,\sigma^2)$
 
 
-They would start by collecting the appropriate data on each variable and form the likelihood function below. They would then try to find the
-$ B $ and $ \sigma^2 $ that maximises this function.
+They would start by collecting the appropriate data on each variable and form the likelihood function below. They would then try to find the $ B $ and $ \sigma^2 $ that maximises this function.
 
 $ 
 F Y_t B,\sigma^2 = (2\pi \sigma^2)^{-T/2} \exp(- \frac{(Y_t-B X_t)^T (Y_t-B X_t)}{2 \sigma^2})
 $
 
 
-In this case the optimal coefficients can be found by taking the derivative of the log of this function and finding the values of $\hat{B}$ where the derivative equals zero. If we actually did the math, we would find the solution to be the OLS estimates below.
+In this case the optimal coefficients can be found by taking the derivative of the log of this function and finding the values of $\hat{B}$ where the derivative equals zero. If we actually did the math, we would find the solution to be the OLS estimates below. I will not go into the derivation here but [here](https://www.youtube.com/watch?v=fb1CNQT-3Pg) is a really nice video going through deriving the OLS estimates in detail.
 
 
 $\hat{B} = (X_t' X_t)^{-1}(X_t' Y_t)$
@@ -42,7 +41,14 @@ $\sigma^2 = \dfrac{\epsilon' \epsilon}{T}$
 
 
 
-where T is the number of rows in our dataset. The main difference between the classical Frequentist approach and the Bayesian approach is that the parameters of the model are solely based on the information contained in the data whereas the Bayesian approach allows us to incorporate other information through the use of a prior. We are able to incorporate this prior belief by using Bayes law. The posterior distribution of our parameters (what we want to find) can be expressed in the following way.
+where T is the number of rows in our dataset. The main difference between the classical Frequentist approach and the Bayesian approach is that the parameters of the model are solely based on the information contained in the data whereas the Bayesian approach allows us to incorporate other information through the use of a prior. We are able to incorporate this prior belief by using Bayes rule. Remeber the forumla for Bayes rule is
+
+$
+p(A|B) = \frac{P(B|A) \times P(A)}{P(B)}
+$
+
+
+We can apply this formula to describe the posterior distribution of our parameters (what we want to find) in the following way.
 
 
 $
@@ -50,9 +56,9 @@ H(B,\sigma^2 Y_t) \propto F(Y_t B, \sigma^2) \times P(B,\sigma^2)
 $
 
 
-This equation states that the posterior distribution of our parameters conditional on our data is proportional to our likelihood function (which is normal btw) multiplied by the prior distribution of our coefficients. There is usually a term $F(Y)$ in the denominator on the right hand side but since this is only a constant and doesn't depend on our parameters we can omit it for the moment.
+This equation states that the posterior distribution of our parameters conditional on our data is proportional to our likelihood function (which we assume is normal) multiplied by the prior distribution of our coefficients. There is usually a term $F(Y)$ in the denominator on the right hand side (equivalent to the P(B) in Bayes rule) but since this is only a normalising constant to ensure our distribution integrates to 1. Notice also that it doesn't depend on our parameters so we can omit it for the moment.
 
-In order to calculate the posterior distribution, one needs to isolate the part of this posterior distribution related to each coefficient. This involves calculating marginal distributions, which for many models in practice is extremely difficult to calculate analytically. This is where a numerical method known as Gibbs sampling comes in handy. The Gibbs sampler let's us use draws from the conditional distribution to approximate the joint marginal  distribution. Here is a quick overview of how it works:
+In order to calculate the posterior distribution, we need to isolate the part of this posterior distribution related to each coefficient. This involves calculating marginal distributions, which for many models in practice is extremely difficult to calculate analytically. This is where a numerical method known as Gibbs sampling comes in handy. The Gibbs sampler let's us use draws from the conditional distribution to approximate the joint marginal  distribution. Here is a quick overview of how it works:
 
 Imagine we have a joint distribution of N variables: 
 $
